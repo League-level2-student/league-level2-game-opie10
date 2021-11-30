@@ -4,16 +4,17 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements KeyListener {
 	final int MENU = 0;
 	final int GAME = 1;
-	final int END = 2;
+	
 	Font titleFont = new Font("Arial", Font.BOLD, 29);
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
 	int currentState = MENU;
-
+	LevelManager LevelManager = new LevelManager();
 	public void updateGameState() {
 
 	}
@@ -22,14 +23,23 @@ public class GamePanel extends JPanel implements KeyListener {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
 		g.setFont(titleFont);
-		g.setColor(Color.WHITE);
-		g.drawString("WELCOME TO THE FƎRZUƆ IMPERIUM'S SHIP; THE F.I.S DRAGONFLY", 10, 100);
+		g.setColor(Color.YELLOW);
+		g.drawString("WELCOME TO THE FƎRZUƆ IMPERIUM'S SHIP: THE F.I.S DRAGONFLY", 100, 100);
 		g.setFont(menuFont);
 		g.setColor(Color.YELLOW);
+		g.drawString("You will be briefed on your mission on the way to your dropoff point.", 300, 400);
+		g.setFont(menuFont);
+		g.setColor(Color.YELLOW);
+		g.drawString("Space for Instructions", 500, 800);
+		//blinking font below? do-able but for end
+		g.setFont(titleFont);
+		g.setColor(Color.BLUE);
+		g.drawString("Enter to Begin", 500, 600);
 
 	}
 
 	public void drawGameState(Graphics g) {
+	LevelManager.draw(g);	
 
 	}
 
@@ -42,9 +52,7 @@ public class GamePanel extends JPanel implements KeyListener {
 			drawMenuState(g);
 		} else if (currentState == GAME) {
 			drawGameState(g);
-		} else if (currentState == END) {
-			drawEndState(g);
-		}
+		} 
 
 	}
 
@@ -58,14 +66,28 @@ public class GamePanel extends JPanel implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (currentState == MENU) {
+if (e.getKeyCode()== KeyEvent.VK_SPACE) {
+	JOptionPane.showMessageDialog(null, "WASD to move\n" + "Click to use weapon and open chests\n" + "Enter to restart\n","Instructions",JOptionPane.INFORMATION_MESSAGE);
+	
+}if (e.getKeyCode()== KeyEvent.VK_ENTER) {
+		currentState = GAME;
+		System.out.println(currentState);
+		}
+
+
 
 		}
 		if (currentState == GAME) {
-
+			
+			if (e.getKeyCode()== KeyEvent.VK_W) {}
+			if (e.getKeyCode()== KeyEvent.VK_A) {}
+			if (e.getKeyCode()== KeyEvent.VK_S) {}
+			if (e.getKeyCode()== KeyEvent.VK_D) {}
+			if (e.getKeyCode()== KeyEvent.VK_ENTER) {}
+			
 		}
-		if (currentState == END) {
-
-		}
+		
+			
 	}
 
 	@Override

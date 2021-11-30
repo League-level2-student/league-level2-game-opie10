@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 public class OrbAttacker {
 	JFrame jf ;
 	public static final int width = 1200  ;
-	public static final int height = 1200  ;
+	public static final int height = 900  ;
 	GamePanel GP = new GamePanel();
 
 public static void main(String[] args) {
