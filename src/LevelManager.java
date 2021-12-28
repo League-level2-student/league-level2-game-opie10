@@ -4,11 +4,12 @@ import java.util.ArrayList;
 public class LevelManager {
 	ArrayList<Level> Levels = new ArrayList<>();
 	Level CurrentLevel;
+	Level Home = new Level(0);
 	Level o1 = new Level(1);
 	Level o2 = new Level(2);
 	Level o3 = new Level(3);
 	Level Trade = new Level(4);
-	Level Home = new Level(0);
+	
 
 	LevelManager() {
 
@@ -21,7 +22,7 @@ public class LevelManager {
 	}
 
 	public void draw(Graphics g) {
-
+System.out.println("Drawing level");
 		CurrentLevel.draw(g);
 	}
 

@@ -71,7 +71,10 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 	
 }if (e.getKeyCode()== KeyEvent.VK_ENTER) {
 		currentState = GAME;
+		repaint();
 		System.out.println(currentState);
+		System.out.println(LevelManager.CurrentLevel.LevelNumber);
+		LevelManager.CurrentLevel = LevelManager.Home;
 		}
 
 
