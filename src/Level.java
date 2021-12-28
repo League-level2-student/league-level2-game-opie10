@@ -16,9 +16,44 @@ public class Level {
 			g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
 		 	g.setFont(menuFont);
 			g.setColor(Color.YELLOW);
-			g.drawString("Starting Level 1", 400, 100);
+			g.drawString("[Insert story here]", 400, 100);
 	}
-		
+	else if (LevelNumber ==1) {
+		 g.setColor(Color.BLACK);
+			g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
+		 	g.setFont(menuFont);
+			g.setColor(Color.YELLOW);
+			g.drawString("Welcome to the planet selection screen.", 400, 100);
+	}
+	else if (LevelNumber ==2) {
+		 g.setColor(Color.BLACK);
+			g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
+		 	g.setFont(menuFont);
+			g.setColor(Color.YELLOW);
+			g.drawString("Level 1", 400, 100);
+	}
+	else if (LevelNumber ==3) {
+		 g.setColor(Color.BLACK);
+			g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
+		 	g.setFont(menuFont);
+			g.setColor(Color.YELLOW);
+			g.drawString("Level 2", 400, 100);
+	}
+	else if (LevelNumber ==4) {
+		 g.setColor(Color.BLACK);
+			g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
+		 	g.setFont(menuFont);
+			g.setColor(Color.YELLOW);
+			g.drawString("Level 3", 400, 100);
+	}
+	else if (LevelNumber ==5) {
+		 g.setColor(Color.BLACK);
+			g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
+		 	g.setFont(menuFont);
+			g.setColor(Color.YELLOW);
+			g.drawString("Trading Post", 400, 100);
+	}
+	
 	
 	 
 
