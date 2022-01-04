@@ -1,20 +1,27 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements KeyListener {
 	final int MENU = 0;
 	final int GAME = 1;
-	
+	JFrame frame;
 	Font titleFont = new Font("Arial", Font.BOLD, 29);
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
 	int currentState = MENU;
-	LevelManager LevelManager = new LevelManager();
+	LevelManager LevelManager = new LevelManager(this);
+GamePanel(JFrame jf){
+	frame = jf;
+	
+}
 	public void updateGameState() {
 
 	}
@@ -73,8 +80,7 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 		currentState = GAME;
 		repaint();
 		System.out.println(currentState);
-		System.out.println(LevelManager.CurrentLevel.LevelNumber);
-		LevelManager.CurrentLevel = LevelManager.Home;
+		
 		}
 
 
@@ -86,13 +92,25 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 			if (e.getKeyCode()== KeyEvent.VK_A) {}
 			if (e.getKeyCode()== KeyEvent.VK_S) {}
 			if (e.getKeyCode()== KeyEvent.VK_D) {}
-			if (e.getKeyCode()== KeyEvent.VK_ENTER) {}
+			
+			if (LevelManager.getLevel() == LevelManager.Storyline) {
+				if (e.getKeyCode()== KeyEvent.VK_ENTER) {
+					LevelManager.changeLevel(1);
+					
+				}
+			}
+			
+			
 			
 		}
 		
 			
 	}
 
+	public void JFrameDimen(int w,int h) {
+		frame.setPreferredSize(new Dimension(w,h));
+		frame.pack();
+	}
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
