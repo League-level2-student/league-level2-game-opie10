@@ -9,13 +9,18 @@ import javax.imageio.ImageIO;
 public class Level {
 	int LevelNumber = 0;
 	static BufferedImage lvlobg;
+	static BufferedImage lvltwbg;
+	static BufferedImage lvlthbg;
 	static BufferedImage plntss;
+
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
 	
 	Level(int LevelNumber){
 		this.LevelNumber=LevelNumber;
 		try {
 			lvlobg = ImageIO.read(this.getClass().getResourceAsStream("Level 1/background.png"));
+			lvltwbg = ImageIO.read(this.getClass().getResourceAsStream("Level 2/backgroundtw.png"));
+			lvlthbg = ImageIO.read(this.getClass().getResourceAsStream("Level 3/backgroundth.png"));
 			plntss = ImageIO.read(this.getClass().getResourceAsStream("Level 1/planets.png"));
 		
 		} catch (IOException e) {
@@ -46,7 +51,7 @@ public class Level {
 	}
 	else if (LevelNumber ==2) {
 		g.drawImage(lvlobg, 0, 0, OrbAttacker.width, OrbAttacker.height, null);
-			g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
+			
 		 	g.setFont(menuFont);
 			g.setColor(Color.YELLOW);
 			g.drawString("Level 1", 400, 100);
@@ -54,15 +59,13 @@ public class Level {
 			
 	}
 	else if (LevelNumber ==3) {
-		 g.setColor(Color.BLACK);
-			g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
+		g.drawImage(lvltwbg, 0, 0, OrbAttacker.width, OrbAttacker.height, null);
 		 	g.setFont(menuFont);
 			g.setColor(Color.YELLOW);
 			g.drawString("Level 2", 400, 100);
 	}
 	else if (LevelNumber ==4) {
-		 g.setColor(Color.BLACK);
-			g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
+		g.drawImage(lvlthbg, 0, 0, OrbAttacker.width, OrbAttacker.height, null);
 		 	g.setFont(menuFont);
 			g.setColor(Color.YELLOW);
 			g.drawString("Level 3", 400, 100);

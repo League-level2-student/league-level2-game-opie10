@@ -2,15 +2,20 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
-public class GamePanel extends JPanel implements KeyListener {
+public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	final int MENU = 0;
 	final int GAME = 1;
 	JFrame frame;
@@ -18,8 +23,11 @@ public class GamePanel extends JPanel implements KeyListener {
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
 	int currentState = MENU;
 	LevelManager LevelManager = new LevelManager(this);
+	Timer frameDraw;
 GamePanel(JFrame jf){
 	frame = jf;
+	jf.addMouseListener(LevelManager);
+	 frameDraw = new Timer(1000 / 60, this);
 	
 }
 	public void updateGameState() {
@@ -80,7 +88,7 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 		currentState = GAME;
 		repaint();
 		System.out.println(currentState);
-		
+		frameDraw.start();
 		}
 
 
@@ -116,5 +124,12 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 		// TODO Auto-generated method stub
 
 	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		LevelManager.update();
+		repaint();
+	}
+	
 
 }
