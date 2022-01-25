@@ -21,9 +21,11 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	JFrame frame;
 	Font titleFont = new Font("Arial", Font.BOLD, 29);
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
+	Hero Hero;
 	int currentState = MENU;
 	LevelManager LevelManager = new LevelManager(this);
 	Timer frameDraw;
+	ObjectManager ObjMan = new ObjectManager(Hero);
 GamePanel(JFrame jf){
 	frame = jf;
 	jf.addMouseListener(LevelManager);
@@ -55,7 +57,7 @@ GamePanel(JFrame jf){
 
 	public void drawGameState(Graphics g) {
 	LevelManager.draw(g);	
-
+	
 	}
 
 	public void drawEndState(Graphics g) {
@@ -96,10 +98,19 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 		}
 		if (currentState == GAME) {
 			
-			if (e.getKeyCode()== KeyEvent.VK_W) {}
-			if (e.getKeyCode()== KeyEvent.VK_A) {}
-			if (e.getKeyCode()== KeyEvent.VK_S) {}
-			if (e.getKeyCode()== KeyEvent.VK_D) {}
+		
+			if (e.getKeyCode()== KeyEvent.VK_W) {
+				Hero.foward();
+			}
+			if (e.getKeyCode()== KeyEvent.VK_A) {
+				Hero.left();
+			}
+			if (e.getKeyCode()== KeyEvent.VK_S) {
+				Hero.back();
+			}
+			if (e.getKeyCode()== KeyEvent.VK_D) {
+				Hero.right();
+			}
 			
 			if (LevelManager.getLevel() == LevelManager.Storyline) {
 				if (e.getKeyCode()== KeyEvent.VK_ENTER) {

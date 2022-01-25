@@ -4,6 +4,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class LevelManager implements MouseListener {
+	
 	ArrayList<Level> Levels = new ArrayList<>();
 	private Level CurrentLevel;
 	Level Storyline = new Level(0);
@@ -16,8 +17,9 @@ public class LevelManager implements MouseListener {
 	World one;
 	World two;
 	World three;
-
+	Hero Character = new Hero(525, 700, 150, 150) ;
 	LevelManager(GamePanel GP) {
+		
 		one = new World(191, 221, 154);
 		two = new World(598, 244, 154);
 		three = new World(1007, 226, 154);
@@ -33,8 +35,12 @@ public class LevelManager implements MouseListener {
 	}
 
 	public void draw(Graphics g) {
-		System.out.println("Drawing level");
 		CurrentLevel.draw(g);
+		if (CurrentLevel == o1 ||CurrentLevel == o2 ||CurrentLevel == o3 ) {
+			Character.draw(g);
+			
+		}
+		
 	}
 
 	public void update() {
