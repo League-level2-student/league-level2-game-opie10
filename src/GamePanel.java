@@ -91,14 +91,20 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 		repaint();
 		System.out.println(currentState);
 		frameDraw.start();
+		LevelManager.changeLevel(6);
 		}
 
 
 
+		}
+		if (LevelManager.getLevel() == LevelManager.Storyline) {
+			if (e.getKeyCode()==KeyEvent.VK_ESCAPE) {
+				LevelManager.changeLevel(1);
+			}
 		}
 		if (currentState == GAME) {
 			
-		
+			
 			if (e.getKeyCode()== KeyEvent.VK_W) {
 				Hero.foward();
 			}
@@ -112,12 +118,7 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 				Hero.right();
 			}
 			
-			if (LevelManager.getLevel() == LevelManager.Storyline) {
-				if (e.getKeyCode()== KeyEvent.VK_ENTER) {
-					LevelManager.changeLevel(1);
-					
-				}
-			}
+			
 			
 			
 			
