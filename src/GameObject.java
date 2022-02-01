@@ -22,10 +22,6 @@ GameObject(int x, int y, int width, int height){
 
 public void update() {
 	collisionBox.setBounds(CharX, CharY, CharWidth, CharHeight);
-	 HX = CharX+Hero.XSpeed;
-	 HY =CharY+Hero.YSpeed;
-	 CharX =HX;
-	 CharY = HY;
 	
 }
 

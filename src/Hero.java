@@ -9,6 +9,11 @@ public class Hero extends GameObject{
 	
 	static int XSpeed;
 	static int YSpeed;
+	static final int North = 1;
+	static final int East= 2;
+	static final int South = 3;
+	static final int West = 4;
+	int direction = North;
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
@@ -36,8 +41,25 @@ void draw(Graphics g)
 
 }
 
+
 public void right() {
-    XSpeed=5;
+    if (direction == North) {
+    	XSpeed=5;
+    	
+	}
+    if (direction == East) {
+    	YSpeed =5;
+    	
+	}
+    if (direction == South) {
+    	XSpeed =-5;;
+    	
+	}
+    if (direction == West) {
+    	YSpeed =-5;
+    	
+	}
+	
     super.update();
 }
 public void left() {
@@ -51,8 +73,16 @@ public void foward() {
 public void back() {
    YSpeed=5;
    super.update();
+   
+}
+public void rotateleft() {
+	
+}
+public void rotateright() {
+	
 }
 public void update () {
+
 	if (CharX + XSpeed > 0 && CharX+CharWidth+XSpeed<OrbAttacker.width) {
 		CharX += XSpeed ;
 	}

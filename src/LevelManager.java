@@ -17,7 +17,7 @@ public class LevelManager implements MouseListener {
 	World one;
 	World two;
 	World three;
-	Hero Character = new Hero(525, 700, 150, 150) ;
+	
 	LevelManager(GamePanel GP) {
 		
 		one = new World(191, 221, 154);
@@ -37,7 +37,7 @@ public class LevelManager implements MouseListener {
 	public void draw(Graphics g) {
 		CurrentLevel.draw(g);
 		if (CurrentLevel == o1 ||CurrentLevel == o2 ||CurrentLevel == o3 ) {
-			Character.draw(g);
+			gamePanel.Character.draw(g);
 			
 		}
 		
@@ -45,7 +45,7 @@ public class LevelManager implements MouseListener {
 
 	public void update() {
 		CurrentLevel.update();
-
+gamePanel.Character.update();
 	}
 
 	public void changeLevel(int newLevel) {

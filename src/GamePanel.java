@@ -21,15 +21,20 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	JFrame frame;
 	Font titleFont = new Font("Arial", Font.BOLD, 29);
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
-	Hero Hero;
+	Hero Character = new Hero(525, 700, 150, 150) ;
 	int currentState = MENU;
 	LevelManager LevelManager = new LevelManager(this);
 	Timer frameDraw;
-	ObjectManager ObjMan = new ObjectManager(Hero);
+	ObjectManager ObjMan = new ObjectManager(Character);
+	 int cheat1 ;
+	 int cheat2 ;
+	 int cheat3;
+	 
 GamePanel(JFrame jf){
 	frame = jf;
 	jf.addMouseListener(LevelManager);
 	 frameDraw = new Timer(1000 / 60, this);
+
 	
 }
 	public void updateGameState() {
@@ -103,20 +108,45 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 			}
 		}
 		if (currentState == GAME) {
-			
-			
+			int cheatsE = cheat1+cheat2+cheat3;
+			if (e.getKeyCode()== KeyEvent.VK_Q) {
+				Character.rotateleft();
+			}
+			if (e.getKeyCode()== KeyEvent.VK_E) {
+				Character.rotateright();
+			}
 			if (e.getKeyCode()== KeyEvent.VK_W) {
-				Hero.foward();
+				Character.foward();
 			}
 			if (e.getKeyCode()== KeyEvent.VK_A) {
-				Hero.left();
+				Character.left();
 			}
 			if (e.getKeyCode()== KeyEvent.VK_S) {
-				Hero.back();
+				Character.back();
 			}
 			if (e.getKeyCode()== KeyEvent.VK_D) {
-				Hero.right();
+				Character.right();
 			}
+			
+				if (e.getKeyCode()==KeyEvent.VK_C) {
+					cheat1 = 1;
+					
+				}
+				if (e.getKeyCode()==KeyEvent.VK_H) {
+					cheat2 = 2;
+				}
+				if (e.getKeyCode()==KeyEvent.VK_1) {
+					cheat3 = 3;
+					
+				}
+				if (e.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
+					if (cheatsE==6) {
+						System.out.println("Cheats");
+					}
+				}
+			
+				
+				
 			
 			
 			
@@ -134,12 +164,14 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-
+Character.XSpeed = 0;
+Character.YSpeed= 0;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		LevelManager.update();
+		
 		repaint();
 	}
 	
