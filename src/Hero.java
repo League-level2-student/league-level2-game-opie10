@@ -63,15 +63,63 @@ public void right() {
     super.update();
 }
 public void left() {
-    XSpeed=-5;
+	if (direction == North) {
+    	XSpeed=-5;
+    	
+	}
+    if (direction == East) {
+    	YSpeed =-5;
+    	
+	}
+    if (direction == South) {
+    	XSpeed =5;;
+    	
+	}
+    if (direction == West) {
+    	YSpeed =5;
+    	
+	}
+	
     super.update();
 }
 public void foward() {
-    YSpeed=-5;
+	if (direction == North) {
+    	YSpeed=-5;
+    	
+	}
+    if (direction == East) {
+    	XSpeed =5;
+    	
+	}
+    if (direction == South) {
+    	YSpeed =5;;
+    	
+	}
+    if (direction == West) {
+    	XSpeed =-5;
+    	
+	}
+	
     super.update();
 }
 public void back() {
-   YSpeed=5;
+	if (direction == North) {
+    	YSpeed=5;
+    	
+	}
+    if (direction == East) {
+    	XSpeed =-5;
+    	
+	}
+    if (direction == South) {
+    	YSpeed =-5;;
+    	
+	}
+    if (direction == West) {
+    	XSpeed =5;
+    	
+	}
+	
    super.update();
    
 }

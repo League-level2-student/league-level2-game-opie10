@@ -108,6 +108,8 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 			}
 		}
 		if (currentState == GAME) {
+			
+			
 			int cheatsE = cheat1+cheat2+cheat3;
 			if (e.getKeyCode()== KeyEvent.VK_Q) {
 				Character.rotateleft();
@@ -141,10 +143,18 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 				}
 				if (e.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
 					if (cheatsE==6) {
-						System.out.println("Cheats");
+						JOptionPane.showMessageDialog(null, "Cheats Enabled");
 					}
 				}
-			
+				if (LevelManager.getLevel()==LevelManager.o1||LevelManager.getLevel()==LevelManager.o2||LevelManager.getLevel()==LevelManager.o3) {
+					if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+						LevelManager.changeLevel(1);
+						
+					}
+				}
+				if (cheatsE ==6) {
+					
+				}
 				
 				
 			
