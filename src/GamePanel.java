@@ -113,9 +113,11 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 			int cheatsE = cheat1+cheat2+cheat3;
 			if (e.getKeyCode()== KeyEvent.VK_Q) {
 				Character.rotateleft();
+				System.out.println(Character.direction);
 			}
 			if (e.getKeyCode()== KeyEvent.VK_E) {
 				Character.rotateright();
+				System.out.println(Character.direction);
 			}
 			if (e.getKeyCode()== KeyEvent.VK_W) {
 				Character.foward();

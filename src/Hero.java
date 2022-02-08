@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
@@ -14,7 +16,11 @@ public class Hero extends GameObject{
 	static final int South = 3;
 	static final int West = 4;
 	int direction = North;
-	public static BufferedImage image;
+	
+	public static BufferedImage imageN;
+	public static BufferedImage imageE;
+	public static BufferedImage imageS;
+	public static BufferedImage imageW;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
 	
@@ -34,9 +40,22 @@ void draw(Graphics g)
 {
 	
      if (gotImage) {
-    		g.drawImage(image, CharX, CharY, CharWidth, CharHeight, null);
+    	 if (direction==North) {
+    		 g.drawImage(imageN, CharX, CharY, CharWidth, CharHeight, null);
+		}
+    	 if (direction==East) {
+    		 g.drawImage(imageE, CharX, CharY, CharWidth, CharHeight, null);
+		}
+    	 if (direction==South) {
+    		 g.drawImage(imageS, CharX, CharY, CharWidth, CharHeight, null);
+		}
+    	 if (direction==West) {
+    		 g.drawImage(imageW, CharX, CharY, CharWidth, CharHeight, null);
+		}
+    		
     	
     	} 
+     
 
 
 }
@@ -124,10 +143,41 @@ public void back() {
    
 }
 public void rotateleft() {
-	
+	if (direction ==North) {
+		direction = West;
+		System.out.println("North--> West");
+	}
+	if (direction ==East) {
+		direction = North;
+		System.out.println("East--> North");
+	}
+	if (direction ==South) {
+		direction = East;
+		System.out.println("South--> East");
+	}
+	if (direction ==West) {
+		direction = South;
+		System.out.println("West--> South");
+	}
 }
 public void rotateright() {
+	if (direction ==North) {
+		direction = East;
+		System.out.println("North--> East");
+	}
 	
+	else if (direction ==East) {
+		direction = South;
+		System.out.println("East--> South");
+	}
+	else if (direction ==South) {
+		direction = West;
+		System.out.println("South--> West");
+	}
+	else if (direction ==West) {
+		direction = North;
+		System.out.println("West--> North");
+	}
 }
 public void update () {
 
@@ -143,7 +193,11 @@ public void update () {
 void loadImage(String imageFile) {
     if (needImage) {
         try {
-            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+            imageN = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+            imageE = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+            imageS = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+            imageW = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+            
 	    gotImage = true;
         } catch (Exception e) {
             System.out.println("Error unable to load file");
