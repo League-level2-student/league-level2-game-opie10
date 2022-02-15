@@ -89,7 +89,7 @@ GamePanel(JFrame jf){
 		// TODO Auto-generated method stub
 		if (currentState == MENU) {
 if (e.getKeyCode()== KeyEvent.VK_SPACE) {
-	JOptionPane.showMessageDialog(null, "WASD to move\n" + "Click to use weapon and open chests\n" + "Enter to restart\n","Instructions",JOptionPane.INFORMATION_MESSAGE);
+	JOptionPane.showMessageDialog(null, "-WASD to move\n" + "-Click to use weapon and open chests\n" + "-Enter to restart\n"+"-Movement relates to direction\n"+"  -Ex: If you rotate the character left,(Cont.)\n"+"  -(Cont.) W will take you (From your perspective) right.","Instructions",JOptionPane.INFORMATION_MESSAGE);
 	
 }if (e.getKeyCode()== KeyEvent.VK_ENTER) {
 		currentState = GAME;
@@ -131,12 +131,14 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 			if (e.getKeyCode()== KeyEvent.VK_D) {
 				Character.right();
 			}
-			
+			if (e.getKeyCode()== KeyEvent.VK_H) {
+				JOptionPane.showMessageDialog(null, "-WASD to move\n" + "-Click to use weapon and open chests\n" + "-Enter to restart\n"+"-Movement relates to direction\n"+"  -Ex: If you rotate the character left,(Cont.)\n"+"  -(Cont.) W will take you (From your perspective) right.","Instructions",JOptionPane.INFORMATION_MESSAGE);
+			}
 				if (e.getKeyCode()==KeyEvent.VK_C) {
 					cheat1 = 1;
 					
 				}
-				if (e.getKeyCode()==KeyEvent.VK_H) {
+				if (e.getKeyCode()==KeyEvent.VK_V) {
 					cheat2 = 2;
 				}
 				if (e.getKeyCode()==KeyEvent.VK_1) {
@@ -155,7 +157,10 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 					}
 				}
 				if (cheatsE ==6) {
-					
+					if (e.getKeyCode()==KeyEvent.VK_H) {
+						JOptionPane.showMessageDialog(null, "Cheat Controls:\n"+"(-) to activate invincibility\n"+"(=) to get all weapons & items\n"+"(.) to activate pacifist mode","Cheat Controls",JOptionPane.INFORMATION_MESSAGE);
+						
+					}
 				}
 				
 				

@@ -21,6 +21,7 @@ public class Hero extends GameObject{
 	public static BufferedImage imageE;
 	public static BufferedImage imageS;
 	public static BufferedImage imageW;
+	public static BufferedImage currentImage;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
 	
@@ -29,9 +30,8 @@ Hero(int CharX, int CharY, int CharWidth, int CharHeight) {
 	super(CharX, CharY, CharWidth, CharHeight);
 	// TODO Auto-generated constructor stub
 	if (needImage) {
-	    loadImage ("Level 1/hero.png");
+		loadImages();
 	}
-
 	
 
 	
@@ -146,6 +146,7 @@ public void rotateleft() {
 	if (direction ==North) {
 		direction = West;
 		System.out.println("North--> West");
+	
 	}
 	if (direction ==East) {
 		direction = North;
@@ -161,6 +162,7 @@ public void rotateleft() {
 	}
 }
 public void rotateright() {
+	
 	if (direction ==North) {
 		direction = East;
 		System.out.println("North--> East");
@@ -190,13 +192,13 @@ public void update () {
 	
 	super.update();
 }
-void loadImage(String imageFile) {
+void loadImages() {
     if (needImage) {
         try {
-            imageN = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
-            imageE = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
-            imageS = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
-            imageW = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+            imageN = ImageIO.read(this.getClass().getResourceAsStream("Level 1/heroN.png"));
+            imageE = ImageIO.read(this.getClass().getResourceAsStream("Level 1/heroE.png"));
+            imageS = ImageIO.read(this.getClass().getResourceAsStream("Level 1/heroS.png"));
+            imageW = ImageIO.read(this.getClass().getResourceAsStream("Level 1/heroW.png"));
             
 	    gotImage = true;
         } catch (Exception e) {
@@ -206,4 +208,5 @@ void loadImage(String imageFile) {
         needImage = false;
     }
 }
+ 
 }
