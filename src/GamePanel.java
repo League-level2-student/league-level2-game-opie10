@@ -29,7 +29,9 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	 int cheat1 ;
 	 int cheat2 ;
 	 int cheat3;
-	 
+	 boolean giveall =false;
+	 boolean invincible = false;
+	 boolean pm = false;
 GamePanel(JFrame jf){
 	frame = jf;
 	jf.addMouseListener(LevelManager);
@@ -159,6 +161,24 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 				if (cheatsE ==6) {
 					if (e.getKeyCode()==KeyEvent.VK_H) {
 						JOptionPane.showMessageDialog(null, "Cheat Controls:\n"+"(-) to activate invincibility\n"+"(=) to get all weapons & items\n"+"(.) to activate pacifist mode","Cheat Controls",JOptionPane.INFORMATION_MESSAGE);
+						
+					}
+					if (e.getKeyCode()==KeyEvent.VK_EQUALS) {
+						JOptionPane.showMessageDialog(null, "All Weapons have been given");
+						giveall= true;
+					}
+				
+					if (e.getKeyCode()==KeyEvent.VK_PERIOD) {
+					
+						
+					}
+				
+					if (e.getKeyCode()==KeyEvent.VK_MINUS) {
+					
+							JOptionPane.showMessageDialog(null, "Invincibilty Active");
+							invincible = true;
+						
+						
 						
 					}
 				}

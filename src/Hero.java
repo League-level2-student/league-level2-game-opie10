@@ -148,15 +148,15 @@ public void rotateleft() {
 		System.out.println("North--> West");
 	
 	}
-	if (direction ==East) {
+	else if (direction ==East) {
 		direction = North;
 		System.out.println("East--> North");
 	}
-	if (direction ==South) {
+	else if (direction ==South) {
 		direction = East;
 		System.out.println("South--> East");
 	}
-	if (direction ==West) {
+	else if (direction ==West) {
 		direction = South;
 		System.out.println("West--> South");
 	}
