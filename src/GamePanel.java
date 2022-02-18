@@ -26,12 +26,12 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	LevelManager LevelManager = new LevelManager(this);
 	Timer frameDraw;
 	ObjectManager ObjMan = new ObjectManager(Character);
-	 int cheat1 ;
-	 int cheat2 ;
+	 int cheat1;
+	 int cheat2;
 	 int cheat3;
-	 boolean giveall =false;
-	 boolean invincible = false;
-	 boolean pm = false;
+	 int giveall =0;
+	 int invincible = 0;
+	 int pm = 0;
 GamePanel(JFrame jf){
 	frame = jf;
 	jf.addMouseListener(LevelManager);
@@ -164,19 +164,36 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 						
 					}
 					if (e.getKeyCode()==KeyEvent.VK_EQUALS) {
-						JOptionPane.showMessageDialog(null, "All Weapons have been given");
-						giveall= true;
+						if (giveall==0) {
+							JOptionPane.showMessageDialog(null, "All Weapons have been given");
+							giveall= 1;
+						}
+						
+						
+						
 					}
 				
 					if (e.getKeyCode()==KeyEvent.VK_PERIOD) {
-					
+						if (pm==0) {
+							JOptionPane.showMessageDialog(null, "Pacifist mode active");
+							pm= 1;
+						}
+						else if (pm==1) {
+							JOptionPane.showMessageDialog(null, "Pacifist mode de-activated");
+							pm= 0;
+						}
 						
 					}
 				
 					if (e.getKeyCode()==KeyEvent.VK_MINUS) {
-					
+						if (invincible==0) {
 							JOptionPane.showMessageDialog(null, "Invincibilty Active");
-							invincible = true;
+							invincible = 1;
+						}
+						else if (invincible==1) {
+							JOptionPane.showMessageDialog(null, "Invincibility de-activated");
+							invincible= 0;
+						}	
 						
 						
 						
