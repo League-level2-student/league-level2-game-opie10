@@ -17,7 +17,7 @@ public class LevelManager implements MouseListener {
 	World one;
 	World two;
 	World three;
-	
+	ArrayList L1Minions = new ArrayList<>();
 	LevelManager(GamePanel GP) {
 		
 		one = new World(191, 221, 154);
@@ -58,6 +58,7 @@ gamePanel.Character.update();
 		else if (newLevel == 1) {
 			CurrentLevel = Home;
 			gamePanel.JFrameDimen(Level.plntss.getWidth(), Level.plntss.getHeight());
+		
 		}
 		
 
@@ -65,6 +66,9 @@ gamePanel.Character.update();
 			CurrentLevel = o1;
 			
 				gamePanel.JFrameDimen(OrbAttacker.width, OrbAttacker.height);
+				
+		
+			
 			
 		} else if (newLevel == 3) {
 			CurrentLevel = o2;
@@ -77,6 +81,8 @@ gamePanel.Character.update();
 		}
 
 	}
+
+	
 
 	public Level getLevel() {
 		return CurrentLevel;

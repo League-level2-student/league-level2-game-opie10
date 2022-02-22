@@ -3,6 +3,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -12,7 +13,8 @@ public class Level {
 	static BufferedImage lvltwbg;
 	static BufferedImage lvlthbg;
 	static BufferedImage plntss;
-
+	int window = 0;
+	ArrayList L1Minions = new ArrayList<>();
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
 	
 	Level(int LevelNumber){
@@ -55,7 +57,11 @@ public class Level {
 		 	g.setFont(menuFont);
 			g.setColor(Color.YELLOW);
 			g.drawString("Level 1", 400, 100);
-			
+			if (window ==0) {
+				for (int i = 0; i < L1Minions.size(); i++) {
+					L1Minions.add(new Minions());
+				}
+			}
 			
 	}
 	else if (LevelNumber ==3) {

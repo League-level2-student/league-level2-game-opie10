@@ -88,6 +88,7 @@ GamePanel(JFrame jf){
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		System.out.println("KeyPressed");
 		// TODO Auto-generated method stub
 		if (currentState == MENU) {
 if (e.getKeyCode()== KeyEvent.VK_SPACE) {
@@ -117,48 +118,49 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 				Character.rotateleft();
 				System.out.println(Character.direction);
 			}
-			if (e.getKeyCode()== KeyEvent.VK_E) {
+			else if (e.getKeyCode()== KeyEvent.VK_E) {
 				Character.rotateright();
 				System.out.println(Character.direction);
+				
 			}
-			if (e.getKeyCode()== KeyEvent.VK_W) {
+			else if (e.getKeyCode()== KeyEvent.VK_W) {
 				Character.foward();
 			}
-			if (e.getKeyCode()== KeyEvent.VK_A) {
+			else if (e.getKeyCode()== KeyEvent.VK_A) {
 				Character.left();
 			}
-			if (e.getKeyCode()== KeyEvent.VK_S) {
+			else if (e.getKeyCode()== KeyEvent.VK_S) {
 				Character.back();
 			}
-			if (e.getKeyCode()== KeyEvent.VK_D) {
+			else if (e.getKeyCode()== KeyEvent.VK_D) {
 				Character.right();
 			}
-			if (e.getKeyCode()== KeyEvent.VK_H) {
+			else	if (e.getKeyCode()== KeyEvent.VK_H) {
 				JOptionPane.showMessageDialog(null, "-WASD to move\n" + "-Click to use weapon and open chests\n" + "-Enter to restart\n"+"-Movement relates to direction\n"+"  -Ex: If you rotate the character left,(Cont.)\n"+"  -(Cont.) W will take you (From your perspective) right.","Instructions",JOptionPane.INFORMATION_MESSAGE);
 			}
-				if (e.getKeyCode()==KeyEvent.VK_C) {
+			else if (e.getKeyCode()==KeyEvent.VK_C) {
 					cheat1 = 1;
 					
 				}
-				if (e.getKeyCode()==KeyEvent.VK_V) {
+			else	if (e.getKeyCode()==KeyEvent.VK_V) {
 					cheat2 = 2;
 				}
-				if (e.getKeyCode()==KeyEvent.VK_1) {
+			else if (e.getKeyCode()==KeyEvent.VK_1) {
 					cheat3 = 3;
 					
 				}
-				if (e.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
+			else if (e.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
 					if (cheatsE==6) {
 						JOptionPane.showMessageDialog(null, "Cheats Enabled");
 					}
 				}
-				if (LevelManager.getLevel()==LevelManager.o1||LevelManager.getLevel()==LevelManager.o2||LevelManager.getLevel()==LevelManager.o3) {
+			else if (LevelManager.getLevel()==LevelManager.o1||LevelManager.getLevel()==LevelManager.o2||LevelManager.getLevel()==LevelManager.o3) {
 					if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 						LevelManager.changeLevel(1);
 						
 					}
 				}
-				if (cheatsE ==6) {
+			else if (cheatsE ==6) {
 					if (e.getKeyCode()==KeyEvent.VK_H) {
 						JOptionPane.showMessageDialog(null, "Cheat Controls:\n"+"(-) to activate invincibility\n"+"(=) to get all weapons & items\n"+"(.) to activate pacifist mode","Cheat Controls",JOptionPane.INFORMATION_MESSAGE);
 						
@@ -218,6 +220,7 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+		System.out.println("keyreleased");
 Character.XSpeed = 0;
 Character.YSpeed= 0;
 	}

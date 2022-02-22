@@ -66,15 +66,15 @@ public void right() {
     	XSpeed=5;
     	
 	}
-    if (direction == East) {
+    else  if (direction == East) {
     	YSpeed =5;
     	
 	}
-    if (direction == South) {
+    else if (direction == South) {
     	XSpeed =-5;;
     	
 	}
-    if (direction == West) {
+    else   if (direction == West) {
     	YSpeed =-5;
     	
 	}
