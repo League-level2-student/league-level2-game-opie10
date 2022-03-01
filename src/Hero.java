@@ -16,7 +16,7 @@ public class Hero extends GameObject{
 	static final int South = 3;
 	static final int West = 4;
 	int direction = North;
-	
+	boolean boostenabled = false;
 	public static BufferedImage imageN;
 	public static BufferedImage imageE;
 	public static BufferedImage imageS;
@@ -59,7 +59,26 @@ void draw(Graphics g)
 
 
 }
-
+public void boost() {
+	boostenabled = true;
+	if (direction == North) {
+    	YSpeed = -12;
+    			}
+    else  if (direction == East) {
+    	    	XSpeed =12;
+    	    	
+    		}
+     else if (direction == South) {
+    	    	YSpeed =12;
+    	    	
+    		}
+    	 else   if (direction == West) {
+    	    	XSpeed =-12;
+    	    	
+    		}
+	
+	
+}
 
 public void right() {
     if (direction == North) {
@@ -102,19 +121,22 @@ public void left() {
     super.update();
 }
 public void foward() {
-	if (direction == North) {
+	if (boostenabled==true) {
+		return;
+	}
+	else if (direction == North) {
     	YSpeed=-5;
     	
 	}
-    if (direction == East) {
+	else if (direction == East) {
     	XSpeed =5;
     	
 	}
-    if (direction == South) {
+	else if (direction == South) {
     	YSpeed =5;;
     	
 	}
-    if (direction == West) {
+	else if (direction == West) {
     	XSpeed =-5;
     	
 	}

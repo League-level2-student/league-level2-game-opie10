@@ -8,6 +8,7 @@ public class GameObject {
 	int CharHeight = 20;
 	int HX;
 	int HY;
+	Hero h;
 	 int speed = 10 ;
 	 boolean isAlive ;
 Rectangle collisionBox ;

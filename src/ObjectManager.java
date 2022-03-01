@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +8,8 @@ import java.util.Random;
 public class ObjectManager implements ActionListener {
 	ArrayList<Projectile> projectile = new ArrayList<>();
 	ArrayList<Minions> Minion = new ArrayList<>();
-	Random rand = new Random();
+
+	boolean shootright = false;
 	
 	int score = 0;
 	Boolean isInvincible = false;
@@ -25,16 +27,22 @@ public class ObjectManager implements ActionListener {
 	
 
 	public void addProjectile(Projectile pow) {
-		if (pow.shootright=true) {
+		
+	
+		if (shootright==true) {
+			System.out.println("shootright");
 			pow.projX = pow.CharX +28;
 			projectile.add(pow);
-			pow.shootright = false;
+		    shootright = false;
+		    return;
 		} 
-		
-		else if (pow.shootright=false) {
-			pow.projX = pow.CharX -28;
+		 
+	 if (shootright==false) {
+			System.out.println("shootleft");
+			pow.projX = pow.CharX -45;
 			projectile.add(pow);
-			pow.shootright = true;
+			shootright =true;
+			return;
 		} 
 		
 	}

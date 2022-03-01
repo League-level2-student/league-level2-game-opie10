@@ -126,20 +126,41 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 			}
 			else if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 			ObjMan.addProjectile(ObjMan.h.getProjectile());
+			
 			}
 			else if (e.getKeyCode()== KeyEvent.VK_W) {
 				Character.foward();
+			}
+			else if (e.getKeyCode()== KeyEvent.VK_UP) {
+				Character.foward();
+			
 			}
 		
 			else if (e.getKeyCode()== KeyEvent.VK_A) {
 				Character.left();
 			}
+			else if (e.getKeyCode()== KeyEvent.VK_LEFT) {
+				Character.left();
+			
+			}
 			else if (e.getKeyCode()== KeyEvent.VK_S) {
+				Character.back();
+			}
+			else if (e.getKeyCode()== KeyEvent.VK_DOWN) {
 				Character.back();
 			}
 			else if (e.getKeyCode()== KeyEvent.VK_D) {
 				Character.right();
+				
 			}
+			else if (e.getKeyCode()== KeyEvent.VK_RIGHT) {
+				Character.right();
+			
+			}
+			else if (e.getKeyCode()== KeyEvent.VK_SHIFT) {
+				Character.boost();
+			}
+			
 			else	if (e.getKeyCode()== KeyEvent.VK_H) {
 				JOptionPane.showMessageDialog(null, "-WASD to move\n" + "-Click to use weapon and open chests\n" + "-Enter to restart\n"+"-Movement relates to direction\n"+"  -Ex: If you rotate the character left,(Cont.)\n"+"  -(Cont.) W will take you (From your perspective) right.","Instructions",JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -222,8 +243,14 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 		frame.setPreferredSize(new Dimension(w,h));
 		frame.pack();
 	}
+
 	@Override
 	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode()== KeyEvent.VK_SHIFT) {
+			Character.boostenabled =false;
+			
+			
+		}
 		// TODO Auto-generated method stub
 		System.out.println("keyreleased");
 Character.XSpeed = 0;
