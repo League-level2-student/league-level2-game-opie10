@@ -17,6 +17,7 @@ OrbAttacker(){
 	jf = new JFrame();
 }
 void setup() {
+	
 	GP = new GamePanel(jf);
 	jf.add(GP);
 	jf.setSize(width, height);

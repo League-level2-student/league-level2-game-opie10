@@ -32,6 +32,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	 int giveall =0;
 	 int invincible = 0;
 	 int pm = 0;
+	 
 GamePanel(JFrame jf){
 	frame = jf;
 	jf.addMouseListener(LevelManager);
@@ -123,9 +124,13 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 				System.out.println(Character.direction);
 				
 			}
+			else if (e.getKeyCode()== KeyEvent.VK_SPACE) {
+			ObjMan.addProjectile(ObjMan.h.getProjectile());
+			}
 			else if (e.getKeyCode()== KeyEvent.VK_W) {
 				Character.foward();
 			}
+		
 			else if (e.getKeyCode()== KeyEvent.VK_A) {
 				Character.left();
 			}

@@ -9,10 +9,10 @@ public class GameObject {
 	int HX;
 	int HY;
 	 int speed = 10 ;
-	 boolean isActive ;
+	 boolean isAlive ;
 Rectangle collisionBox ;
 GameObject(int x, int y, int width, int height){
-	isActive = true ;
+	isAlive = true ;
 	this.CharX = x ;
 	this.CharY = y ;
 	this.CharWidth = width ;

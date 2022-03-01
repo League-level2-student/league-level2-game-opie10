@@ -38,6 +38,10 @@ public class LevelManager implements MouseListener {
 		CurrentLevel.draw(g);
 		if (CurrentLevel == o1 ||CurrentLevel == o2 ||CurrentLevel == o3 ) {
 			gamePanel.Character.draw(g);
+			for (int i = 0; i < gamePanel.ObjMan.projectile.size(); i++) {
+				gamePanel.ObjMan.projectile.get(i).draw(g);
+				gamePanel.ObjMan.projectile.get(i).update();
+			}
 			
 		}
 		
@@ -46,6 +50,7 @@ public class LevelManager implements MouseListener {
 	public void update() {
 		CurrentLevel.update();
 gamePanel.Character.update();
+
 	}
 
 	public void changeLevel(int newLevel) {

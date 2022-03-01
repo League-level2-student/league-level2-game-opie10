@@ -5,11 +5,24 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 public class Minions {
+	
+
+
+
+
+
+
+
+
+
 	public static BufferedImage gorilla;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
-	void draw(){
-		
+	int MinionY = 100;
+	int MinionX = 100;
+	
+	void draw(Graphics g){
+	
 	}
 	public void update() {
 			

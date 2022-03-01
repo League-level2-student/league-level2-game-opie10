@@ -9,8 +9,8 @@ import javax.imageio.ImageIO;
 public class Hero extends GameObject{
 	
 	
-	static int XSpeed;
-	static int YSpeed;
+	int XSpeed;
+	int YSpeed;
 	static final int North = 1;
 	static final int East= 2;
 	static final int South = 3;
@@ -208,5 +208,8 @@ void loadImages() {
         needImage = false;
     }
 }
- 
+public Projectile getProjectile() {
+	
+    return new Projectile(CharX+CharWidth/2, CharY, 10, 10);
+} 
 }
