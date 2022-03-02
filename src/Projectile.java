@@ -20,29 +20,29 @@ public class Projectile extends Hero {
 		speed = 5;
 
 		if (needImage) {
-			System.out.println("@loadimage");
+			
 			loadImage("lazer.png");
 		}
 	}
 
 	public void update() {
 		if (direction == North) {
-System.out.println("Proj facing north");
+			System.out.println("Proj facing north");
 			projY -= speed;
 			return;
 		}
-		if (direction == East) {
+		else if (direction == East) {
 			System.out.println("Proj facing east");
 			projX += speed;
 			return;
 		}
-		if (direction == South) {
+		else if (direction == South) {
 			System.out.println("Proj facing south");
 			projY += speed;
 			return;
 		}
 
-		if (direction == West) {
+		else if (direction == West) {
 			System.out.println("Proj facing west");
 			projX -= speed;
 			return;
