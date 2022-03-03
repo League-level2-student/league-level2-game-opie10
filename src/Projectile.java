@@ -27,22 +27,30 @@ public class Projectile extends Hero {
 
 	public void update() {
 		if (direction == North) {
+		//projY = CharY;
+			//projX=CharX+28;
 			System.out.println("Proj facing north");
-			projY -= speed;
+		projY =	projY-speed;
 			return;
-		}
+	}
 		else if (direction == East) {
+			projY = CharY+10;
+			projX=CharX-15;
 			System.out.println("Proj facing east");
-			projX += speed;
+			projX = projX + speed;
 			return;
 		}
 		else if (direction == South) {
+			projY = CharY+23;
+			projX=CharX;
 			System.out.println("Proj facing south");
 			projY += speed;
 			return;
 		}
 
 		else if (direction == West) {
+			projY = CharY+10;
+			projX=CharX - 13;
 			System.out.println("Proj facing west");
 			projX -= speed;
 			return;

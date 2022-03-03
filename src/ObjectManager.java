@@ -8,7 +8,7 @@ import java.util.Random;
 public class ObjectManager implements ActionListener {
 	ArrayList<Projectile> projectile = new ArrayList<>();
 	ArrayList<Minions> Minion = new ArrayList<>();
-
+Projectile proj;
 	boolean shootright = false;
 	
 	int score = 0;

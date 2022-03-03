@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 public class Hero extends GameObject{
 	
-	
+	Projectile pow;
 	int XSpeed;
 	int YSpeed;
 	static final int North = 1;
@@ -211,6 +211,8 @@ public void update () {
 	if (CharY+YSpeed> 0 && CharY+CharHeight+YSpeed<OrbAttacker.height) {
 		CharY += YSpeed ;
 	}
+	
+		
 	
 	super.update();
 }
