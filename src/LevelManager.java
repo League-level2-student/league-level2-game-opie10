@@ -3,6 +3,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class LevelManager implements MouseListener {
 	
 	ArrayList<Level> Levels = new ArrayList<>();
@@ -17,6 +19,7 @@ public class LevelManager implements MouseListener {
 	World one;
 	World two;
 	World three;
+	JOptionPane pane = new JOptionPane();
 	ArrayList L1Minions = new ArrayList<>();
 	LevelManager(GamePanel GP) {
 		
@@ -62,6 +65,7 @@ gamePanel.Character.update();
 
 		else if (newLevel == 1) {
 			CurrentLevel = Home;
+			
 			gamePanel.JFrameDimen(Level.plntss.getWidth(), Level.plntss.getHeight());
 		
 		}

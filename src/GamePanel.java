@@ -93,8 +93,8 @@ GamePanel(JFrame jf){
 		// TODO Auto-generated method stub
 		if (currentState == MENU) {
 if (e.getKeyCode()== KeyEvent.VK_SPACE) {
-	JOptionPane.showMessageDialog(null, "-WASD to move\n" + "-Click to use weapon and open chests\n" + "-Enter to restart\n"+"-Movement relates to direction\n"+"  -Ex: If you rotate the character left,(Cont.)\n"+"  -(Cont.) W will take you (From your perspective) right.","Instructions",JOptionPane.INFORMATION_MESSAGE);
-	
+	JOptionPane.showMessageDialog(null, "-WASD to move\n" + "-SPACE to shoot\n"+ "-F to interact/Open chests\n" + "-ENTER to restart\n"+"-H for help\n"+"-Movement relates to direction\n"+"  -Ex: If you rotate the character left,(Cont.)\n"+"  -(Cont.) W will take you (From your perspective) right.","Instructions",JOptionPane.INFORMATION_MESSAGE);
+
 }if (e.getKeyCode()== KeyEvent.VK_ENTER) {
 		currentState = GAME;
 		repaint();
@@ -162,7 +162,7 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 			}
 			
 			else	if (e.getKeyCode()== KeyEvent.VK_H) {
-				JOptionPane.showMessageDialog(null, "-WASD to move\n" + "-Click to use weapon and open chests\n" + "-Enter to restart\n"+"-Movement relates to direction\n"+"  -Ex: If you rotate the character left,(Cont.)\n"+"  -(Cont.) W will take you (From your perspective) right.","Instructions",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "-WASD to move\n" + "-SPACE to shoot\n"+ "-F to interact/Open chests\n" + "-ENTER to restart\n"+"-H for help\n"+"-Movement relates to direction\n"+"  -Ex: If you rotate the character left,(Cont.)\n"+"  -(Cont.) W will take you (From your perspective) right.","Instructions",JOptionPane.INFORMATION_MESSAGE);
 			}
 			else if (e.getKeyCode()==KeyEvent.VK_C) {
 					cheat1 = 1;
