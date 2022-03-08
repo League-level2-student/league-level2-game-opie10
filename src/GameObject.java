@@ -9,6 +9,7 @@ public class GameObject {
 	int HX;
 	int HY;
 	Hero h;
+	int projdirection;
 	 int speed = 10 ;
 	 boolean isAlive ;
 Rectangle collisionBox ;

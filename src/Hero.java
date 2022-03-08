@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 public class Hero extends GameObject{
 	
-	Projectile pow;
+	GameObject GO;
 	int XSpeed;
 	int YSpeed;
 	static final int North = 1;
@@ -62,18 +62,18 @@ void draw(Graphics g)
 public void boost() {
 	boostenabled = true;
 	if (direction == North) {
-    	YSpeed = -12;
+    	YSpeed = -10;
     			}
     else  if (direction == East) {
-    	    	XSpeed =12;
+    	    	XSpeed =10;
     	    	
     		}
      else if (direction == South) {
-    	    	YSpeed =12;
+    	    	YSpeed =10;
     	    	
     		}
     	 else   if (direction == West) {
-    	    	XSpeed =-12;
+    	    	XSpeed =-10;
     	    	
     		}
 	
@@ -212,7 +212,7 @@ public void update () {
 		CharY += YSpeed ;
 	}
 	
-		
+	
 	
 	super.update();
 }
@@ -234,6 +234,7 @@ void loadImages() {
 }
 public Projectile getProjectile() {
 	
-    return new Projectile(CharX+CharWidth/2, CharY, 10, 10);
+    return new Projectile(CharX+CharWidth/2, CharY, 10, 15, direction);
+  
 } 
 }

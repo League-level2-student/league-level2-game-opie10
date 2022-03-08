@@ -19,7 +19,7 @@ public class LevelManager implements MouseListener {
 	World one;
 	World two;
 	World three;
-	JOptionPane pane = new JOptionPane();
+	
 	ArrayList L1Minions = new ArrayList<>();
 	LevelManager(GamePanel GP) {
 		

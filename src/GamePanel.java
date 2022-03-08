@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.util.TimerTask;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,6 +26,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	int currentState = MENU;
 	LevelManager LevelManager = new LevelManager(this);
 	Timer frameDraw;
+	boolean textBlue = true;
+	
 	ObjectManager ObjMan = new ObjectManager(Character);
 	 int cheat1;
 	 int cheat2;
@@ -32,12 +35,12 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	 int giveall =0;
 	 int invincible = 0;
 	 int pm = 0;
-	 
+	Timer menuflash = new Timer(1000, this);
 GamePanel(JFrame jf){
 	frame = jf;
 	jf.addMouseListener(LevelManager);
 	 frameDraw = new Timer(1000 / 60, this);
-
+	
 	
 }
 	public void updateGameState() {
@@ -45,6 +48,8 @@ GamePanel(JFrame jf){
 	}
 
 	public void drawMenuState(Graphics g) {
+		menuflash.start();
+		
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
 		g.setFont(titleFont);
@@ -56,10 +61,17 @@ GamePanel(JFrame jf){
 		g.setFont(menuFont);
 		g.setColor(Color.YELLOW);
 		g.drawString("Space for Instructions", 500, 800);
-		//blinking font below? do-able but for end
+		
 		g.setFont(titleFont);
+	if (textBlue) {
+		
 		g.setColor(Color.BLUE);
-		g.drawString("Enter to Begin", 500, 600);
+		
+	}else {
+		g.setColor(Color.BLACK);
+	}
+	g.drawString("Enter to Begin", 500, 600);
+		
 
 	}
 
@@ -99,6 +111,7 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 		currentState = GAME;
 		repaint();
 		System.out.println(currentState);
+		menuflash.stop();
 		frameDraw.start();
 		LevelManager.changeLevel(6);
 		}
@@ -258,11 +271,20 @@ Character.YSpeed= 0;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		LevelManager.update();
+		if (e.getSource()==menuflash){
+			textBlue = !textBlue;
+			repaint();
+			
+		}
 		
-		repaint();
-	}
+		// TODO Auto-generated method stub
+		if (e.getSource()==frameDraw) {
+			LevelManager.update();
+			
+			repaint();
+		}
+		
 	
-
+	
+	}
 }

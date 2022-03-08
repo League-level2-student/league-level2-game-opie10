@@ -30,20 +30,68 @@ Projectile proj;
 		
 	
 		if (shootright==true) {
-			System.out.println("shootright");
-			pow.projX = pow.CharX +28;
-			projectile.add(pow);
-		    shootright = false;
-		    return;
+			if (h.direction==h.North) {
+				pow.projX = pow.CharX +28;
+				projectile.add(pow);
+			    shootright = false;
+			    return;	
+			}
+			if (h.direction==h.East) {
+				pow.projX = pow.CharX+35;
+				pow.projY = pow.CharY +107 ;
+				projectile.add(pow);
+			    shootright = false;
+			    return;	
+			}
+			if (h.direction==h.South) {
+				pow.projX = pow.CharX-41;
+				pow.projY = pow.CharY +110;
+				projectile.add(pow);
+			    shootright = false;
+			    return;	
+			}
+			if (h.direction==h.West) {
+				pow.projX = pow.CharX-50;
+				pow.projY = pow.CharY +107;
+				projectile.add(pow);
+			    shootright = false;
+			    return;	
+			}
+			
 		} 
 		 
 	 if (shootright==false) {
-			System.out.println("shootleft");
-			pow.projX = pow.CharX -45;
-			projectile.add(pow);
-			shootright =true;
-			return;
-		} 
+		 if (h.direction==h.North) {
+			 pow.projX = pow.CharX -45;
+				projectile.add(pow);
+				shootright =true;
+				return;
+			}
+		 if (h.direction==h.East) {
+			 pow.projY = pow.CharY +28;
+			 pow.projX = pow.CharX +35;
+				projectile.add(pow);
+				shootright =true;
+				return;
+			}
+		 if (h.direction==h.South) {
+			 pow.projY = pow.CharY +110;
+			 pow.projX = pow.CharX +34;
+				projectile.add(pow);
+				shootright =true;
+				return;
+			}
+		if (h.direction==h.West) {
+			pow.projY = pow.CharY +34   ;
+			 pow.projX = pow.CharX -50;
+				projectile.add(pow);
+				shootright =true;
+				return;
+		}
+			
+			
+			
+	 }
 		
 	}
 
