@@ -18,7 +18,7 @@ public class Projectile extends GameObject {
 		super(x, y, width, height);
 		projdirection = direction;
 		// TODO Auto-generated constructor stub
-		speed = 5;
+		speed = 6;
 
 		if (needImage) {
 			
@@ -29,33 +29,27 @@ public class Projectile extends GameObject {
 
 	public void update() {
 		if (projdirection == 1) {
-		//projY = CharY;
-			//projX=CharX+28;
-			System.out.println("Proj facing north");
+		
+			
 			
 		projY =	projY-speed;
 			return;
 	}
 		else if (projdirection == 2) {
 			
-			//projY = CharY+10;
-			//projX=CharX-15;
-			System.out.println("Proj facing east");
+			
+			
 			projX = projX + speed;
 			return;
 		}
 		else if (projdirection == 3) {
-			//projY = CharY+23;
-			//projX=CharX;
-			System.out.println("Proj facing south");
+			
 			projY += speed;
 			return;
 		}
 
 		else if (projdirection == 4) {
-			//projY = CharY+10;
-			//projX=CharX - 13;
-			System.out.println("Proj facing west");
+			
 			projX -= speed;
 			return;
 

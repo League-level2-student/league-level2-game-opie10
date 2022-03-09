@@ -9,6 +9,7 @@ public class LevelManager implements MouseListener {
 	
 	ArrayList<Level> Levels = new ArrayList<>();
 	private Level CurrentLevel;
+	boolean ingame = false;
 	Level Storyline = new Level(0);
 	Level Home = new Level(1);
 	Level o1 = new Level(2);
@@ -40,6 +41,7 @@ public class LevelManager implements MouseListener {
 	public void draw(Graphics g) {
 		CurrentLevel.draw(g);
 		if (CurrentLevel == o1 ||CurrentLevel == o2 ||CurrentLevel == o3 ) {
+			ingame = true;
 			gamePanel.Character.draw(g);
 			for (int i = 0; i < gamePanel.ObjMan.projectile.size(); i++) {
 				gamePanel.ObjMan.projectile.get(i).draw(g);
@@ -57,7 +59,7 @@ gamePanel.Character.update();
 	}
 
 	public void changeLevel(int newLevel) {
-		System.out.println(newLevel);
+		
 		if (newLevel == 0) {
 			CurrentLevel = Storyline;
 
@@ -73,7 +75,9 @@ gamePanel.Character.update();
 
 		else if (newLevel == 2) {
 			CurrentLevel = o1;
-			
+			gamePanel.Character.CharX=525;
+			gamePanel.Character.CharY=700;
+			gamePanel.Character.direction=gamePanel.Character.North;
 				gamePanel.JFrameDimen(OrbAttacker.width, OrbAttacker.height);
 				
 		
@@ -81,8 +85,15 @@ gamePanel.Character.update();
 			
 		} else if (newLevel == 3) {
 			CurrentLevel = o2;
+			gamePanel.Character.CharX=525;
+			gamePanel.Character.CharY=700;
+			gamePanel.Character.direction=gamePanel.Character.North;
 			gamePanel.JFrameDimen(OrbAttacker.width, OrbAttacker.height);
 		} else if (newLevel == 4) {
+			gamePanel.Character.CharX=525;
+			gamePanel.Character.CharY=700;
+			gamePanel.Character.direction=gamePanel.Character.North;
+			
 			gamePanel.JFrameDimen(OrbAttacker.width, OrbAttacker.height);
 			CurrentLevel = o3;
 		} else if (newLevel == 5) {

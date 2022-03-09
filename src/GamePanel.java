@@ -101,7 +101,7 @@ GamePanel(JFrame jf){
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("KeyPressed");
+		
 		// TODO Auto-generated method stub
 		if (currentState == MENU) {
 if (e.getKeyCode()== KeyEvent.VK_SPACE) {
@@ -126,128 +126,130 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 		}
 		if (currentState == GAME) {
 			
-			
-			int cheatsE = cheat1+cheat2+cheat3;
-			if (e.getKeyCode()== KeyEvent.VK_Q) {
-				Character.rotateleft();
-				System.out.println(Character.direction);
-			}
-			else if (e.getKeyCode()== KeyEvent.VK_E) {
-				Character.rotateright();
-				System.out.println(Character.direction);
-				
-			}
-			else if (e.getKeyCode()== KeyEvent.VK_SPACE) {
-			ObjMan.addProjectile(ObjMan.h.getProjectile());
-			
-			}
-			else if (e.getKeyCode()== KeyEvent.VK_W) {
-				Character.foward();
-			}
-			else if (e.getKeyCode()== KeyEvent.VK_UP) {
-				Character.foward();
-			
-			}
-		
-			else if (e.getKeyCode()== KeyEvent.VK_A) {
-				Character.left();
-			}
-			else if (e.getKeyCode()== KeyEvent.VK_LEFT) {
-				Character.left();
-			
-			}
-			else if (e.getKeyCode()== KeyEvent.VK_S) {
-				Character.back();
-			}
-			else if (e.getKeyCode()== KeyEvent.VK_DOWN) {
-				Character.back();
-			}
-			else if (e.getKeyCode()== KeyEvent.VK_D) {
-				Character.right();
-				
-			}
-			else if (e.getKeyCode()== KeyEvent.VK_RIGHT) {
-				Character.right();
-			
-			}
-			else if (e.getKeyCode()== KeyEvent.VK_SHIFT) {
-				Character.boost();
-			}
-			
-			else	if (e.getKeyCode()== KeyEvent.VK_H) {
-				JOptionPane.showMessageDialog(null, "-WASD to move\n" + "-SPACE to shoot\n"+ "-F to interact/Open chests\n" + "-ENTER to restart\n"+"-H for help\n"+"-Movement relates to direction\n"+"  -Ex: If you rotate the character left,(Cont.)\n"+"  -(Cont.) W will take you (From your perspective) right.","Instructions",JOptionPane.INFORMATION_MESSAGE);
-			}
-			else if (e.getKeyCode()==KeyEvent.VK_C) {
-					cheat1 = 1;
+			if (LevelManager.ingame==true) {
+				int cheatsE = cheat1+cheat2+cheat3;
+				if (e.getKeyCode()== KeyEvent.VK_Q) {
+					Character.rotateleft();
 					
 				}
-			else	if (e.getKeyCode()==KeyEvent.VK_V) {
-					cheat2 = 2;
-				}
-			else if (e.getKeyCode()==KeyEvent.VK_1) {
-					cheat3 = 3;
+				else if (e.getKeyCode()== KeyEvent.VK_E) {
+					Character.rotateright();
+					
 					
 				}
-			else if (e.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
-					if (cheatsE==6) {
-						JOptionPane.showMessageDialog(null, "Cheats Enabled");
-					}
-				}
-			else if (LevelManager.getLevel()==LevelManager.o1||LevelManager.getLevel()==LevelManager.o2||LevelManager.getLevel()==LevelManager.o3) {
-					if (e.getKeyCode()==KeyEvent.VK_ENTER) {
-						LevelManager.changeLevel(1);
-						
-					}
-				}
-			else if (cheatsE ==6) {
-					if (e.getKeyCode()==KeyEvent.VK_H) {
-						JOptionPane.showMessageDialog(null, "Cheat Controls:\n"+"(-) to activate invincibility\n"+"(=) to get all weapons & items\n"+"(.) to activate pacifist mode","Cheat Controls",JOptionPane.INFORMATION_MESSAGE);
-						
-					}
-					if (e.getKeyCode()==KeyEvent.VK_EQUALS) {
-						if (giveall==0) {
-							JOptionPane.showMessageDialog(null, "All Weapons have been given");
-							giveall= 1;
-						}
-						
-						
-						
-					}
+				else if (e.getKeyCode()== KeyEvent.VK_SPACE) {
+				ObjMan.addProjectile(ObjMan.h.getProjectile());
 				
-					if (e.getKeyCode()==KeyEvent.VK_PERIOD) {
-						if (pm==0) {
-							JOptionPane.showMessageDialog(null, "Pacifist mode active");
-							pm= 1;
-						}
-						else if (pm==1) {
-							JOptionPane.showMessageDialog(null, "Pacifist mode de-activated");
-							pm= 0;
-						}
-						
-					}
+				}
+				else if (e.getKeyCode()== KeyEvent.VK_W) {
+					Character.foward();
+				}
+				else if (e.getKeyCode()== KeyEvent.VK_UP) {
+					Character.foward();
 				
-					if (e.getKeyCode()==KeyEvent.VK_MINUS) {
-						if (invincible==0) {
-							JOptionPane.showMessageDialog(null, "Invincibilty Active");
-							invincible = 1;
-						}
-						else if (invincible==1) {
-							JOptionPane.showMessageDialog(null, "Invincibility de-activated");
-							invincible= 0;
-						}	
-						
-						
-						
-					}
+				}
+			
+				else if (e.getKeyCode()== KeyEvent.VK_A) {
+					Character.left();
+				}
+				else if (e.getKeyCode()== KeyEvent.VK_LEFT) {
+					Character.left();
+				
+				}
+				else if (e.getKeyCode()== KeyEvent.VK_S) {
+					Character.back();
+				}
+				else if (e.getKeyCode()== KeyEvent.VK_DOWN) {
+					Character.back();
+				}
+				else if (e.getKeyCode()== KeyEvent.VK_D) {
+					Character.right();
+					
+				}
+				else if (e.getKeyCode()== KeyEvent.VK_RIGHT) {
+					Character.right();
+				
+				}
+				else if (e.getKeyCode()== KeyEvent.VK_SHIFT) {
+					Character.boost();
 				}
 				
+				else	if (e.getKeyCode()== KeyEvent.VK_H) {
+					JOptionPane.showMessageDialog(null, "-WASD to move\n" + "-SPACE to shoot\n"+ "-F to interact/Open chests\n" + "-ENTER to restart\n"+"-H for help\n"+"-Movement relates to direction\n"+"  -Ex: If you rotate the character left,(Cont.)\n"+"  -(Cont.) W will take you (From your perspective) right.","Instructions",JOptionPane.INFORMATION_MESSAGE);
+				}
+				else if (e.getKeyCode()==KeyEvent.VK_C) {
+						cheat1 = 1;
+						
+					}
+				else	if (e.getKeyCode()==KeyEvent.VK_V) {
+						cheat2 = 2;
+					}
+				else if (e.getKeyCode()==KeyEvent.VK_1) {
+						cheat3 = 3;
+						
+					}
+				else if (e.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
+						if (cheatsE==6) {
+							JOptionPane.showMessageDialog(null, "Cheats Enabled");
+						}
+					}
+				else if (LevelManager.getLevel()==LevelManager.o1||LevelManager.getLevel()==LevelManager.o2||LevelManager.getLevel()==LevelManager.o3) {
+						if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+							LevelManager.changeLevel(1);
+							
+						}
+					}
+				else if (cheatsE ==6) {
+						if (e.getKeyCode()==KeyEvent.VK_H) {
+							JOptionPane.showMessageDialog(null, "Cheat Controls:\n"+"(-) to activate invincibility\n"+"(=) to get all weapons & items\n"+"(.) to activate pacifist mode","Cheat Controls",JOptionPane.INFORMATION_MESSAGE);
+							
+						}
+						if (e.getKeyCode()==KeyEvent.VK_EQUALS) {
+							if (giveall==0) {
+								JOptionPane.showMessageDialog(null, "All Weapons have been given");
+								giveall= 1;
+							}
+							
+							
+							
+						}
+					
+						if (e.getKeyCode()==KeyEvent.VK_PERIOD) {
+							if (pm==0) {
+								JOptionPane.showMessageDialog(null, "Pacifist mode active");
+								pm= 1;
+							}
+							else if (pm==1) {
+								JOptionPane.showMessageDialog(null, "Pacifist mode de-activated");
+								pm= 0;
+							}
+							
+						}
+					
+						if (e.getKeyCode()==KeyEvent.VK_MINUS) {
+							if (invincible==0) {
+								JOptionPane.showMessageDialog(null, "Invincibilty Active");
+								invincible = 1;
+							}
+							else if (invincible==1) {
+								JOptionPane.showMessageDialog(null, "Invincibility de-activated");
+								invincible= 0;
+							}	
+							
+							
+							
+						}
+					}
+					
+					
 				
+				
+				
+				
+				
+			}
+			}
 			
-			
-			
-			
-			
-		}
 		
 			
 	}
@@ -265,7 +267,7 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 			
 		}
 		// TODO Auto-generated method stub
-		System.out.println("keyreleased");
+		
 Character.XSpeed = 0;
 Character.YSpeed= 0;
 	}
