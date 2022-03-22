@@ -11,6 +11,8 @@ public class Hero extends GameObject{
 	GameObject GO;
 	int XSpeed;
 	int YSpeed;
+	int Damage = 1;
+	int Health = 5;
 	static final int North = 1;
 	static final int East= 2;
 	static final int South = 3;

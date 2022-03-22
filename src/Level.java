@@ -14,9 +14,15 @@ public class Level {
 	static BufferedImage lvlthbg;
 	static BufferedImage plntss;
 	int window = 0;
-	ArrayList L1Minions = new ArrayList<>();
+	ObjectManager obj;
+	LevelManager LM;
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
-	
+	Level(ObjectManager obj){
+		
+	}
+Level(LevelManager LeMan){
+		
+	}
 	Level(int LevelNumber){
 		this.LevelNumber=LevelNumber;
 		try {
@@ -58,8 +64,9 @@ public class Level {
 			g.setColor(Color.YELLOW);
 			g.drawString("Level 1", 400, 100);
 			if (window ==0) {
-				for (int i = 0; i < L1Minions.size(); i++) {
-					L1Minions.add(new Minions());
+				for (int i = 0; i < obj.Minion.size(); i++) {
+					obj.Minion.add(new Minion(500,100,100,100,0));
+					System.out.println("add minion");
 				}
 			}
 			

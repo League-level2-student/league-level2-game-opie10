@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 public class LevelManager implements MouseListener {
 	
 	ArrayList<Level> Levels = new ArrayList<>();
+
 	private Level CurrentLevel;
 	boolean ingame = false;
 	Level Storyline = new Level(0);
@@ -20,13 +21,18 @@ public class LevelManager implements MouseListener {
 	World one;
 	World two;
 	World three;
-	
+	World Trader;
+	ObjectManager Obj;
 	ArrayList L1Minions = new ArrayList<>();
+	LevelManager(ObjectManager Obj){
+		
+	}
 	LevelManager(GamePanel GP) {
 		
 		one = new World(191, 221, 154);
 		two = new World(598, 244, 154);
 		three = new World(1007, 226, 154);
+	//	Trader = new World();
 
 		gamePanel = GP;
 		Levels.add(o1);
@@ -43,12 +49,16 @@ public class LevelManager implements MouseListener {
 		if (CurrentLevel == o1 ||CurrentLevel == o2 ||CurrentLevel == o3 ) {
 			ingame = true;
 			gamePanel.Character.draw(g);
+			for (int i = 0; i < Obj.Minion.size(); i++) {
+				Obj.Minion.get(i).draw(g);
+				System.out.println("drawing");
+			}
+
 			for (int i = 0; i < gamePanel.ObjMan.projectile.size(); i++) {
 				gamePanel.ObjMan.projectile.get(i).draw(g);
 				gamePanel.ObjMan.projectile.get(i).update();
 			}
-			
-		}
+					}
 		
 	}
 
