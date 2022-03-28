@@ -15,10 +15,12 @@ public class Minion extends GameObject{
 	
 	Minion(int x, int y, int width, int height, int type){
 		 super(x,y,width,height);
+		
 	}
 
 
 	void draw(Graphics g){
+		
 	if (type == 0) {
 		System.out.println("draw minion");
 		if (gotImage) {

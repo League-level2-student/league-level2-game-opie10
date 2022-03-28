@@ -22,17 +22,16 @@ public class LevelManager implements MouseListener {
 	World two;
 	World three;
 	World Trader;
-	ObjectManager Obj;
-	ArrayList L1Minions = new ArrayList<>();
-	LevelManager(ObjectManager Obj){
-		
-	}
-	LevelManager(GamePanel GP) {
-		
+	ObjectManager ObjM;
+ArrayList<Minion> Minions;
+	
+	LevelManager(GamePanel GP, ObjectManager Obj) {
+		this.ObjM = Obj;
+		this.Minions =Obj.Minions;
 		one = new World(191, 221, 154);
 		two = new World(598, 244, 154);
 		three = new World(1007, 226, 154);
-	//	Trader = new World();
+		Trader = new World(1255,40,35);
 
 		gamePanel = GP;
 		Levels.add(o1);
@@ -43,17 +42,26 @@ public class LevelManager implements MouseListener {
 		Levels.add(Storyline);
 		changeLevel(0);
 	}
-
+	
 	public void draw(Graphics g) {
 		CurrentLevel.draw(g);
 		if (CurrentLevel == o1 ||CurrentLevel == o2 ||CurrentLevel == o3 ) {
 			ingame = true;
+			
+			if (gamePanel.Character != null) {
+				
+			
 			gamePanel.Character.draw(g);
-			for (int i = 0; i < Obj.Minion.size(); i++) {
-				Obj.Minion.get(i).draw(g);
+			}
+			System.out.println(Minions.size());
+			if (Minions != null) {
+				
+			
+			for (int i = 0; i < ObjM.Minions.size(); i++) {
+				ObjM.Minions.get(i).draw(g);
 				System.out.println("drawing");
 			}
-
+			}
 			for (int i = 0; i < gamePanel.ObjMan.projectile.size(); i++) {
 				gamePanel.ObjMan.projectile.get(i).draw(g);
 				gamePanel.ObjMan.projectile.get(i).update();
@@ -108,6 +116,7 @@ gamePanel.Character.update();
 			CurrentLevel = o3;
 		} else if (newLevel == 5) {
 			CurrentLevel = Trade;
+			gamePanel.JFrameDimen(Level.tradeIMG.getWidth(), Level.tradeIMG.getHeight());
 		}
 
 	}
@@ -137,7 +146,10 @@ gamePanel.Character.update();
 			else if (three.checkInside(e.getX(), e.getY())) {
 				changeLevel(4);
 			}
+			else if (Trader.checkInside(e.getX(), e.getY())) {
+				changeLevel(5);
 
+			}
 		}
 	}
 

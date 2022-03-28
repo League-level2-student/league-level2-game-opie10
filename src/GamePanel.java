@@ -24,11 +24,12 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
 	Hero Character = new Hero(525, 700, 150, 150) ;
 	int currentState = MENU;
-	LevelManager LevelManager = new LevelManager(this);
+	ObjectManager ObjMan = new ObjectManager(Character);
+	LevelManager LevelManager = new LevelManager(this,ObjMan);
 	Timer frameDraw;
 	boolean textBlue = true;
 	
-	ObjectManager ObjMan = new ObjectManager(Character);
+	
 	 int cheat1;
 	 int cheat2;
 	 int cheat3;

@@ -13,24 +13,24 @@ public class Level {
 	static BufferedImage lvltwbg;
 	static BufferedImage lvlthbg;
 	static BufferedImage plntss;
+	static BufferedImage tradeIMG;
 	int window = 0;
-	ObjectManager obj;
+
 	LevelManager LM;
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
-	Level(ObjectManager obj){
+
+	ArrayList<Minion> Minions = new ArrayList<>();
 		
-	}
-Level(LevelManager LeMan){
-		
-	}
+
 	Level(int LevelNumber){
+		
 		this.LevelNumber=LevelNumber;
 		try {
 			lvlobg = ImageIO.read(this.getClass().getResourceAsStream("Level 1/background.png"));
 			lvltwbg = ImageIO.read(this.getClass().getResourceAsStream("Level 2/backgroundtw.png"));
 			lvlthbg = ImageIO.read(this.getClass().getResourceAsStream("Level 3/backgroundth.png"));
 			plntss = ImageIO.read(this.getClass().getResourceAsStream("Level 1/planets.png"));
-		
+			tradeIMG = ImageIO.read(this.getClass().getResourceAsStream("Level 1/trade.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,9 +64,13 @@ Level(LevelManager LeMan){
 			g.setColor(Color.YELLOW);
 			g.drawString("Level 1", 400, 100);
 			if (window ==0) {
-				for (int i = 0; i < obj.Minion.size(); i++) {
-					obj.Minion.add(new Minion(500,100,100,100,0));
-					System.out.println("add minion");
+				
+				
+				for (int i = 0; i < 10; i++) {
+					Minions.add(new Minion(500,100,100,100,0));
+					System.out.println();
+				
+				
 				}
 			}
 			
@@ -84,17 +88,23 @@ Level(LevelManager LeMan){
 			g.drawString("Level 3", 400, 100);
 	}
 	else if (LevelNumber ==5) {
-		 g.setColor(Color.BLACK);
-			g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
-		 	g.setFont(menuFont);
-			g.setColor(Color.YELLOW);
-			g.drawString("Trading Post", 400, 100);
+		g.drawImage(tradeIMG, 0, 0, tradeIMG.getWidth(), tradeIMG.getHeight(), null);
+		
+	 	g.setFont(menuFont);
+		g.setColor(Color.YELLOW);
+		g.drawString("Welcome to the trading post", 200, 50);
 	}
 	
 	
 	 
 
 }
+ public void addMinions(ArrayList<Minion> al)
+ {
+	 for (int i = 0; i < al.size(); i++) {
+		Minions.add(al.get(i));
+	}
+ }
  public void update() {
 	
 

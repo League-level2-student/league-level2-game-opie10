@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Random;
 public class ObjectManager implements ActionListener {
 	ArrayList<Projectile> projectile = new ArrayList<>();
-	ArrayList<Minion> Minion = new ArrayList<>();
+	ArrayList<Minion> Minions = new ArrayList<>();
 Projectile proj;
 	boolean shootright = false;
 	
@@ -97,7 +97,7 @@ Projectile proj;
 
 
 	public void update() {
-
+System.out.println(Minions.size());
 		for (int i = 0; i < projectile.size(); i++) {
 			projectile.get(i).update();
 
@@ -105,8 +105,8 @@ Projectile proj;
 				projectile.get(i).isAlive = false;
 			}
 		}
-	for (int i = 0; i < Minion.size(); i++) {
-			Minion.get(i).update();
+	for (int i = 0; i < Minions.size(); i++) {
+			Minions.get(i).update();
 
 			//if (Minion.get(i). > OrbAttacker.height) {
 				//Minion.get(i).isAlive = false;
@@ -122,9 +122,6 @@ Projectile proj;
 
 	public void draw(Graphics g) {
 		
-		for (int i = 0; i < Minion.size(); i++) {
-			Minion.get(i).draw(g);
-		}
 		for (int i = 0; i < projectile.size(); i++) {
 			projectile.get(i).draw(g);
 		}
@@ -134,8 +131,8 @@ Projectile proj;
 
 	public void purgeObjects() {
 
-		for (int i = 0; i < Minion.size(); i++) {
-			Minion.get(i);
+		for (int i = 0; i < Minions.size(); i++) {
+			Minions.get(i);
 			//if (Minion.get(i).isAlive == false) {
 			//	Minion.remove(i);
 			//}
