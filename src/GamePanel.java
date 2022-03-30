@@ -124,6 +124,12 @@ if (e.getKeyCode()== KeyEvent.VK_SPACE) {
 			if (e.getKeyCode()==KeyEvent.VK_ESCAPE) {
 				LevelManager.changeLevel(1);
 			}
+			
+		}
+		if (LevelManager.getLevel() == LevelManager.Trade) {
+			if (e.getKeyCode()==KeyEvent.VK_ESCAPE) {
+				LevelManager.changeLevel(1);
+			}
 		}
 		if (currentState == GAME) {
 			
