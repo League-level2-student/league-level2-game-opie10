@@ -35,9 +35,10 @@ public class LevelManager implements MouseListener {
 		two = new World(598, 244, 154);
 		three = new World(1007, 226, 154);
 		Trader = new World(1255, 40, 35);
-		buyone = new World(1255, 40, 35);
-		buytwo = new World(1255, 40, 35);
-		Trader = new World(1255, 40, 35);
+		buyone = new World(131, 40, 32);
+		buytwo = new World(131, 297, 32);
+		buythree = new World(131,460,32);
+		
 		gamePanel = GP;
 		Levels.add(o1);
 		Levels.add(o2);
@@ -145,6 +146,15 @@ this.ObjM.Minions = CurrentLevel.Minions;
 				changeLevel(4);
 			} else if (Trader.checkInside(e.getX(), e.getY())) {
 				changeLevel(5);
+
+			}else if (buyone.checkInside(e.getX(), e.getY())) {
+				System.out.println("buy option 1");
+
+			}else if (buytwo.checkInside(e.getX(), e.getY())) {
+				System.out.println("buy option 2");
+
+			}else if (buythree.checkInside(e.getX(), e.getY())) {
+				System.out.println("buy option 3");
 
 			}
 		}

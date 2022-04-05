@@ -198,7 +198,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 						LevelManager.changeLevel(1);
 
 					}
-				} else if (cheatsE == 6) {
+				} 
+				 if (cheatsE == 6) {
 					if (e.getKeyCode() == KeyEvent.VK_H) {
 						JOptionPane.showMessageDialog(null,
 								"Cheat Controls:\n" + "(-) to activate invincibility\n"
@@ -213,8 +214,9 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 						}
 
 					}
-					if (e.getKeyCode() == KeyEvent.VK_COMMA) {
-						JOptionPane.showMessageDialog(null, "Minions:"+LevelManager.Minions.size()+"\n  ");
+					if (e.getKeyCode() == KeyEvent.VK_SLASH) {
+						System.out.println("test");
+						JOptionPane.showMessageDialog(null, "Minions:"+LevelManager.Minions.size()+"\n Window Size: "+OrbAttacker.width+" by "+OrbAttacker.height+"\n Frame draw time: "+frameDraw.getDelay()+"\nCredits:\n Code: Augie\n A lot of help: Daniel\n Like a lot of help: Daniel\n ");
 
 					}
 
