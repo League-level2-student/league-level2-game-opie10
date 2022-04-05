@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class LevelManager implements MouseListener {
-	
+
 	ArrayList<Level> Levels = new ArrayList<>();
 
 	private Level CurrentLevel;
@@ -22,17 +22,22 @@ public class LevelManager implements MouseListener {
 	World two;
 	World three;
 	World Trader;
+	World buyone;
+	World buytwo;
+	World buythree;
 	ObjectManager ObjM;
-ArrayList<Minion> Minions;
-	
+	ArrayList<Minion> Minions;
+
 	LevelManager(GamePanel GP, ObjectManager Obj) {
 		this.ObjM = Obj;
-		this.Minions =Obj.Minions;
+		
 		one = new World(191, 221, 154);
 		two = new World(598, 244, 154);
 		three = new World(1007, 226, 154);
-		Trader = new World(1255,40,35);
-
+		Trader = new World(1255, 40, 35);
+		buyone = new World(1255, 40, 35);
+		buytwo = new World(1255, 40, 35);
+		Trader = new World(1255, 40, 35);
 		gamePanel = GP;
 		Levels.add(o1);
 		Levels.add(o2);
@@ -42,42 +47,40 @@ ArrayList<Minion> Minions;
 		Levels.add(Storyline);
 		changeLevel(0);
 	}
-	
+
 	public void draw(Graphics g) {
 		CurrentLevel.draw(g);
-		if (CurrentLevel == o1 ||CurrentLevel == o2 ||CurrentLevel == o3 ) {
+		if (CurrentLevel == o1 || CurrentLevel == o2 || CurrentLevel == o3) {
 			ingame = true;
-			
+
 			if (gamePanel.Character != null) {
-				
-			
-			gamePanel.Character.draw(g);
+
+				gamePanel.Character.draw(g);
 			}
-			System.out.println(Minions.size());
+			
 			if (Minions != null) {
-				
-			
-			for (int i = 0; i < ObjM.Minions.size(); i++) {
-				ObjM.Minions.get(i).draw(g);
-				System.out.println("drawing");
-			}
+
+				for (int i = 0; i < CurrentLevel.Minions.size(); i++) {
+					CurrentLevel.Minions.get(i).draw(g);
+					
+				}
 			}
 			for (int i = 0; i < gamePanel.ObjMan.projectile.size(); i++) {
 				gamePanel.ObjMan.projectile.get(i).draw(g);
 				gamePanel.ObjMan.projectile.get(i).update();
 			}
-					}
-		
+		}
+
 	}
 
 	public void update() {
 		CurrentLevel.update();
-gamePanel.Character.update();
+		gamePanel.Character.update();
 
 	}
 
 	public void changeLevel(int newLevel) {
-		
+
 		if (newLevel == 0) {
 			CurrentLevel = Storyline;
 
@@ -85,43 +88,38 @@ gamePanel.Character.update();
 
 		else if (newLevel == 1) {
 			CurrentLevel = Home;
-			
+
 			gamePanel.JFrameDimen(Level.plntss.getWidth(), Level.plntss.getHeight());
-		
+
 		}
-		
 
 		else if (newLevel == 2) {
 			CurrentLevel = o1;
-			gamePanel.Character.CharX=525;
-			gamePanel.Character.CharY=700;
-			gamePanel.Character.direction=gamePanel.Character.North;
-				gamePanel.JFrameDimen(OrbAttacker.width, OrbAttacker.height);
-				
-		
-			
-			
+			gamePanel.Character.CharX = 525;
+			gamePanel.Character.CharY = 700;
+			gamePanel.Character.direction = gamePanel.Character.North;
+			gamePanel.JFrameDimen(OrbAttacker.width, OrbAttacker.height);
+
 		} else if (newLevel == 3) {
 			CurrentLevel = o2;
-			gamePanel.Character.CharX=525;
-			gamePanel.Character.CharY=700;
-			gamePanel.Character.direction=gamePanel.Character.North;
+			gamePanel.Character.CharX = 525;
+			gamePanel.Character.CharY = 700;
+			gamePanel.Character.direction = gamePanel.Character.North;
 			gamePanel.JFrameDimen(OrbAttacker.width, OrbAttacker.height);
 		} else if (newLevel == 4) {
-			gamePanel.Character.CharX=525;
-			gamePanel.Character.CharY=700;
-			gamePanel.Character.direction=gamePanel.Character.North;
-			
+			gamePanel.Character.CharX = 525;
+			gamePanel.Character.CharY = 700;
+			gamePanel.Character.direction = gamePanel.Character.North;
+
 			gamePanel.JFrameDimen(OrbAttacker.width, OrbAttacker.height);
 			CurrentLevel = o3;
 		} else if (newLevel == 5) {
 			CurrentLevel = Trade;
 			gamePanel.JFrameDimen(Level.tradeIMG.getWidth(), Level.tradeIMG.getHeight());
 		}
-
+this.Minions =CurrentLevel.Minions;
+this.ObjM.Minions = CurrentLevel.Minions;
 	}
-
-	
 
 	public Level getLevel() {
 		return CurrentLevel;
@@ -145,8 +143,7 @@ gamePanel.Character.update();
 
 			else if (three.checkInside(e.getX(), e.getY())) {
 				changeLevel(4);
-			}
-			else if (Trader.checkInside(e.getX(), e.getY())) {
+			} else if (Trader.checkInside(e.getX(), e.getY())) {
 				changeLevel(5);
 
 			}

@@ -21,35 +21,29 @@ public class Projectile extends GameObject {
 		speed = 6;
 
 		if (needImage) {
-			
+
 			loadImage("lazer.png");
 		}
-		
+
 	}
 
 	public void update() {
 		if (projdirection == 1) {
-		
-			
-			
-		projY =	projY-speed;
+
+			projY = projY - speed;
 			return;
-	}
-		else if (projdirection == 2) {
-			
-			
-			
+		} else if (projdirection == 2) {
+
 			projX = projX + speed;
 			return;
-		}
-		else if (projdirection == 3) {
-			
+		} else if (projdirection == 3) {
+
 			projY += speed;
 			return;
 		}
 
 		else if (projdirection == 4) {
-			
+
 			projX -= speed;
 			return;
 
@@ -59,24 +53,20 @@ public class Projectile extends GameObject {
 	}
 
 	public void draw(Graphics g) {
-		 if (gotImage) {
-	    	 if (projdirection == 1) {
-	    		 g.drawImage(imageNS,projX, projY, 10, 10, null);
-	    	 }
-	    	 else if (projdirection == 3) {
-	    		 g.drawImage(imageNS,projX, projY, 10, 10, null);
-	    	 }
-	    	 else if (projdirection == 2) {
-	    		 g.drawImage(imageEW,projX, projY, 10, 10, null);
-	    	 }
-	    	 else if (projdirection == 4) {
-	    		 g.drawImage(imageEW,projX, projY, 10, 10, null);
-	    	 }
-		 else {
-			g.setColor(Color.BLUE);
-			g.fillRect(projX, projY, 10, 10);
+		if (gotImage) {
+			if (projdirection == 1) {
+				g.drawImage(imageNS, projX, projY, 10, 10, null);
+			} else if (projdirection == 3) {
+				g.drawImage(imageNS, projX, projY, 10, 10, null);
+			} else if (projdirection == 2) {
+				g.drawImage(imageEW, projX, projY, 10, 10, null);
+			} else if (projdirection == 4) {
+				g.drawImage(imageEW, projX, projY, 10, 10, null);
+			} else {
+				g.setColor(Color.BLUE);
+				g.fillRect(projX, projY, 10, 10);
+			}
 		}
-		 }
 	}
 
 	void loadImage(String imageFile) {
