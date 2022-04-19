@@ -21,31 +21,33 @@ public class ObjectManager implements ActionListener {
 	}
 
 	public void addProjectile(Projectile pow) {
-
+		
 		if (shootright == true) {
+			
+			
 			if (h.direction == h.North) {
-				pow.projX = pow.CharX + 28;
+				pow.CharX = h.CharX + 28;
 				projectile.add(pow);
 				shootright = false;
 				return;
 			}
 			if (h.direction == h.East) {
-				pow.projX = pow.CharX + 35;
-				pow.projY = pow.CharY + 107;
+				pow.CharX = h.CharX + 35;
+				pow.CharY = h.CharY + 107;
 				projectile.add(pow);
 				shootright = false;
 				return;
 			}
 			if (h.direction == h.South) {
-				pow.projX = pow.CharX - 41;
-				pow.projY = pow.CharY + 110;
+				pow.CharX = h.CharX + 110;
+				pow.CharY = h.CharY +h.CharHeight;
 				projectile.add(pow);
 				shootright = false;
 				return;
 			}
 			if (h.direction == h.West) {
-				pow.projX = pow.CharX - 50;
-				pow.projY = pow.CharY + 107;
+				pow.CharX= h.CharX - 50;
+				pow.CharY = h.CharY + 107;
 				projectile.add(pow);
 				shootright = false;
 				return;
@@ -55,28 +57,28 @@ public class ObjectManager implements ActionListener {
 
 		if (shootright == false) {
 			if (h.direction == h.North) {
-				pow.projX = pow.CharX - 45;
+				pow.CharX = h.CharX +105;
 				projectile.add(pow);
 				shootright = true;
 				return;
 			}
 			if (h.direction == h.East) {
-				pow.projY = pow.CharY + 28;
-				pow.projX = pow.CharX + 35;
+				pow.CharY = h.CharY + 28;
+				pow.CharX = h.CharX + 35;
 				projectile.add(pow);
 				shootright = true;
 				return;
 			}
 			if (h.direction == h.South) {
-				pow.projY = pow.CharY + 110;
-				pow.projX = pow.CharX + 34;
+				pow.CharY = h.CharY + 110;
+				pow.CharX = h.CharX + 34;
 				projectile.add(pow);
 				shootright = true;
 				return;
 			}
 			if (h.direction == h.West) {
-				pow.projY = pow.CharY + 34;
-				pow.projX = pow.CharX - 50;
+				pow.CharY = h.CharY + 34;
+				pow.CharX = h.CharX - 50;
 				projectile.add(pow);
 				shootright = true;
 				return;
@@ -97,7 +99,8 @@ public class ObjectManager implements ActionListener {
 		}
 		for (int i = 0; i < Minions.size(); i++) {
 			Minions.get(i).update();
-			 checkcollisions();
+			 checkcollision();
+
 			// if (Minion.get(i). > OrbAttacker.height) {
 			// Minion.get(i).isAlive = false;
 		}
@@ -127,8 +130,11 @@ public class ObjectManager implements ActionListener {
 
 	}
 
-	public void checkcollisions() {
+	public void checkcollision() {
+		
+		
 		for (int i = 0; i < Minions.size(); i++) {
+			
 			Rectangle Minionc = Minions.get(i).collisionBox;
 			Rectangle Charc = h.collisionBox;
 			if (isInvincible == false) {
@@ -139,12 +145,17 @@ public class ObjectManager implements ActionListener {
 			}
 			for (int p = 0; p < projectile.size(); p++) {
 				Rectangle rt = projectile.get(p).collisionBox;
+		
+				
 				if (rt.intersects(Minionc)) {
 					projectile.get(p).isAlive = false;
 					Minions.get(i).isAlive = false;
 					score += 1;
+					
 				}
+				
 		}
+			
 		}
 		
 

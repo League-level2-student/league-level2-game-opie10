@@ -29,7 +29,8 @@ public class Minion extends GameObject {
 
 	void draw(Graphics g) {
 		if (gotImage) {
-
+			g.setColor(Color.BLUE);
+g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
 			
 			
 

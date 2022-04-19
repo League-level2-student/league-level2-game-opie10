@@ -77,6 +77,7 @@ public class LevelManager implements MouseListener {
 	public void update() {
 		CurrentLevel.update();
 		gamePanel.Character.update();
+		ObjM.update();
 
 	}
 

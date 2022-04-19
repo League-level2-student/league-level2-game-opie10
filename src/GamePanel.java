@@ -145,8 +145,12 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 					Character.rotateright();
 
 				} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+					
 					ObjMan.addProjectile(ObjMan.h.getProjectile());
-
+					System.out.println(ObjMan.projectile.get(0).CharY);
+					System.out.println(ObjMan.projectile.get(0).CharX);
+					System.out.println(ObjMan.h.CharY);
+					System.out.println(ObjMan.h.CharX);
 				} else if (e.getKeyCode() == KeyEvent.VK_W) {
 					Character.foward();
 				} else if (e.getKeyCode() == KeyEvent.VK_UP) {
