@@ -5,7 +5,7 @@ public class GameObject {
 	int CharX = 525;
 	int CharY = 700;
 	int CharWidth = 20;
-	int CharHeight = 20;
+int CharHeight = 20;
 	int HX;
 	int HY;
 	Hero h;

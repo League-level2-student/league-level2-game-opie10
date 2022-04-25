@@ -17,18 +17,19 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements KeyListener, ActionListener {
-	final int MENU = 0;
-	final int GAME = 1;
+	final static int MENU = 0;
+	final static int GAME = 1;
+	final static int RESET = 2;
 	JFrame frame;
 	Font titleFont = new Font("Arial", Font.BOLD, 29);
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
 	Hero Character = new Hero(525, 700, 150, 150);
-	int currentState = MENU;
+	static int currentState = MENU;
 	ObjectManager ObjMan = new ObjectManager(Character);
 	LevelManager LevelManager = new LevelManager(this, ObjMan);
 	Timer frameDraw;
 	boolean textBlue = true;
-
+boolean respawnready = false;
 	int cheat1;
 	int cheat2;
 	int cheat3;
@@ -36,6 +37,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	int invincible = 0;
 	int pm = 0;
 	Timer menuflash = new Timer(1000, this);
+	Timer respawnwait = new Timer(5000, this);
 
 	GamePanel(JFrame jf) {
 		frame = jf;
@@ -80,15 +82,40 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 
 	}
 
-	public void drawEndState(Graphics g) {
+	public void drawResetState(Graphics g) {
+		menuflash.start();
+		respawnwait.start();
+g.setColor(Color.RED);
+g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
+g.setFont(titleFont);
+g.setColor(Color.BLACK);
+g.drawString("YOU HAVE FAILED.", 500, 100);
+g.setFont(titleFont);
+g.setColor(Color.BLACK);
+if (textBlue) {
 
-	}
+	g.setColor(Color.RED);
+
+} else {
+	g.setColor(Color.BLACK);
+}
+g.drawString("Returning to ship...", 500, 500);
+if (respawnready) {
+	g.setColor(Color.BLACK);
+	g.drawString("RESPAWN WITH ENTER ", 400, 300);
+}
+}
+
+	
 
 	public void paintComponent(Graphics g) {
 		if (currentState == MENU) {
 			drawMenuState(g);
 		} else if (currentState == GAME) {
 			drawGameState(g);
+		}
+		else if (currentState ==RESET){
+			drawResetState(g);
 		}
 
 	}
@@ -101,7 +128,20 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		if (currentState == RESET) {
+			
+		if (respawnready) {
+			
+		
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			currentState=GAME;
+			LevelManager.changeLevel(1);
+			respawnwait.restart();
+respawnwait.stop();
 
+			}
+		}
+		}
 		// TODO Auto-generated method stub
 		if (currentState == MENU) {
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -147,9 +187,10 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 				} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 					
 					ObjMan.addProjectile(ObjMan.h.getProjectile());
-					System.out.println(ObjMan.projectile.get(0).CharY);
-					System.out.println(ObjMan.projectile.get(0).CharX);
+					System.out.println(ObjMan.projectile.get(ObjMan.projectile.size()-1).CharY);
+					System.out.println(ObjMan.projectile.get(ObjMan.projectile.size()-1).CharX);
 					System.out.println(ObjMan.h.CharY);
+					
 					System.out.println(ObjMan.h.CharX);
 				} else if (e.getKeyCode() == KeyEvent.VK_W) {
 					Character.foward();
@@ -276,7 +317,9 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 			repaint();
 
 		}
-
+		if (e.getSource() == respawnwait) {
+			respawnready=true;
+		}
 		// TODO Auto-generated method stub
 		if (e.getSource() == frameDraw) {
 			LevelManager.update();

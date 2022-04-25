@@ -11,7 +11,7 @@ public class Hero extends GameObject {
 	GameObject GO;
 	int XSpeed;
 	int YSpeed;
-	int Damage = 1;
+
 	int Health = 5;
 	static final int North = 1;
 	static final int East = 2;
@@ -38,7 +38,8 @@ public class Hero extends GameObject {
 	}
 
 	void draw(Graphics g) {
-
+		g.setColor(Color.GREEN);
+		g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
 		if (gotImage) {
 			if (direction == North) {
 				g.drawImage(imageN, CharX, CharY, CharWidth, CharHeight, null);

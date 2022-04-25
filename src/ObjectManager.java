@@ -18,6 +18,7 @@ public class ObjectManager implements ActionListener {
 
 	ObjectManager(Hero Hero) {
 		h = Hero;
+		
 	}
 
 	public void addProjectile(Projectile pow) {
@@ -32,7 +33,7 @@ public class ObjectManager implements ActionListener {
 				return;
 			}
 			if (h.direction == h.East) {
-				pow.CharX = h.CharX + 35;
+				pow.projX = h.CharX + 110;
 				pow.CharY = h.CharY + 107;
 				projectile.add(pow);
 				shootright = false;
@@ -40,13 +41,13 @@ public class ObjectManager implements ActionListener {
 			}
 			if (h.direction == h.South) {
 				pow.CharX = h.CharX + 110;
-				pow.CharY = h.CharY +h.CharHeight;
+				pow.projY = h.CharY +105;
 				projectile.add(pow);
 				shootright = false;
 				return;
 			}
 			if (h.direction == h.West) {
-				pow.CharX= h.CharX - 50;
+				pow.projX= h.CharX+25;
 				pow.CharY = h.CharY + 107;
 				projectile.add(pow);
 				shootright = false;
@@ -64,13 +65,13 @@ public class ObjectManager implements ActionListener {
 			}
 			if (h.direction == h.East) {
 				pow.CharY = h.CharY + 28;
-				pow.CharX = h.CharX + 35;
+				pow.projX = h.CharX + 115;
 				projectile.add(pow);
 				shootright = true;
 				return;
 			}
 			if (h.direction == h.South) {
-				pow.CharY = h.CharY + 110;
+				pow.projY = h.CharY + 110;
 				pow.CharX = h.CharX + 34;
 				projectile.add(pow);
 				shootright = true;
@@ -78,7 +79,7 @@ public class ObjectManager implements ActionListener {
 			}
 			if (h.direction == h.West) {
 				pow.CharY = h.CharY + 34;
-				pow.CharX = h.CharX - 50;
+				pow.projX = h.CharX + 25;
 				projectile.add(pow);
 				shootright = true;
 				return;
@@ -93,24 +94,36 @@ public class ObjectManager implements ActionListener {
 		for (int i = 0; i < projectile.size(); i++) {
 			projectile.get(i).update();
 
-			if (projectile.get(i).projY < OrbAttacker.height) {
-				projectile.get(i).isAlive = false;
-			}
+			
+				if(projectile.get(i).projY>OrbAttacker.height) {
+			
+			projectile.get(i).isAlive = false;
+				}
+				if (projectile.get(i).projY<0) {
+					projectile.get(i).isAlive = false;
+				}
+				if (projectile.get(i).projX>OrbAttacker.width) {
+					projectile.get(i).isAlive = false;
+				}
+				if (projectile.get(i).projX<0) {
+					projectile.get(i).isAlive = false;
+				}
+				
+		
+			System.out.println("the size is "+projectile.size());
 		}
 		for (int i = 0; i < Minions.size(); i++) {
 			Minions.get(i).update();
 			 checkcollision();
 
-			// if (Minion.get(i). > OrbAttacker.height) {
-			// Minion.get(i).isAlive = false;
-		}
+			
 	}
 
 	 
-	// purgeObjects();
-	// scoreTrack();
+	 purgeObjects();
+	 scoreTrack();
 
-	//}
+	}
 
 	public void draw(Graphics g) {
 
@@ -127,6 +140,12 @@ public class ObjectManager implements ActionListener {
 			 Minions.remove(i);
 			 }
 		}
+		for (int i = 0; i < projectile.size(); i++) {
+			projectile.get(i);
+			if (projectile.get(i).isAlive == false) {
+			 projectile.remove(i);
+			 }
+		}
 
 	}
 
@@ -137,11 +156,13 @@ public class ObjectManager implements ActionListener {
 			
 			Rectangle Minionc = Minions.get(i).collisionBox;
 			Rectangle Charc = h.collisionBox;
-			if (isInvincible == false) {
+			
 				if (Minionc.intersects(Charc)) {
 					h.isAlive = false;
-				}
-
+				
+					GamePanel.currentState=GamePanel.RESET;
+						
+					
 			}
 			for (int p = 0; p < projectile.size(); p++) {
 				Rectangle rt = projectile.get(p).collisionBox;

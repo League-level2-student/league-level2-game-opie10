@@ -69,13 +69,22 @@ public class Level {
 			if (window == 0) {
 				if (!minionspawned) {
 
-					for (int i = 0; i < 10; i++) {
+					for (int i = 0; i < 5; i++) {
 						Random randx = new Random();
 						int randnumx = randx.nextInt(1100);
 						Random randy = new Random();
 						int randnumy = randy.nextInt(400);
 						
 						Minions.add(new Minion(randnumx, randnumy, 100, 100, 0));
+
+					}
+					for (int i = 0; i < 10; i++) {
+						Random randx = new Random();
+						int randnumx = randx.nextInt(1100);
+						Random randy = new Random();
+						int randnumy = randy.nextInt(400);
+						
+						Minions.add(new Minion(randnumx, randnumy, 100, 100, 1));
 
 					}
 					minionspawned=true;
