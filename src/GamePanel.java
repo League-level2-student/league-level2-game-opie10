@@ -20,6 +20,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	final static int MENU = 0;
 	final static int GAME = 1;
 	final static int RESET = 2;
+	int reloadtimer = 0;
+	int deaths = 1;
 	JFrame frame;
 	Font titleFont = new Font("Arial", Font.BOLD, 29);
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
@@ -38,7 +40,7 @@ boolean respawnready = false;
 	int pm = 0;
 	Timer menuflash = new Timer(1000, this);
 	Timer respawnwait = new Timer(5000, this);
-
+	Timer reloadtime = new Timer(3000, this);
 	GamePanel(JFrame jf) {
 		frame = jf;
 		jf.addMouseListener(LevelManager);
@@ -83,6 +85,8 @@ boolean respawnready = false;
 	}
 
 	public void drawResetState(Graphics g) {
+		
+		
 		menuflash.start();
 		respawnwait.start();
 g.setColor(Color.RED);
@@ -90,6 +94,9 @@ g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
 g.setFont(titleFont);
 g.setColor(Color.BLACK);
 g.drawString("YOU HAVE FAILED.", 500, 100);
+g.setFont(titleFont);
+g.setColor(Color.BLACK);
+g.drawString("YOU HAVE DIED "+deaths+" TIMES", 450, 800);
 g.setFont(titleFont);
 g.setColor(Color.BLACK);
 if (textBlue) {
@@ -102,7 +109,8 @@ if (textBlue) {
 g.drawString("Returning to ship...", 500, 500);
 if (respawnready) {
 	g.setColor(Color.BLACK);
-	g.drawString("RESPAWN WITH ENTER ", 400, 300);
+	g.drawString("RESPAWN WITH ENTER ", 450, 300);
+
 }
 }
 
@@ -134,11 +142,12 @@ if (respawnready) {
 			
 		
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				deaths = deaths+1;
 			currentState=GAME;
 			LevelManager.changeLevel(1);
 			respawnwait.restart();
 respawnwait.stop();
-
+respawnready=false;
 			}
 		}
 		}
@@ -185,6 +194,9 @@ respawnwait.stop();
 					Character.rotateright();
 
 				} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+					reloadtimer = reloadtimer+1;
+					if (reloadtimer<75) {
+						
 					
 					ObjMan.addProjectile(ObjMan.h.getProjectile());
 					System.out.println(ObjMan.projectile.get(ObjMan.projectile.size()-1).CharY);
@@ -192,6 +204,10 @@ respawnwait.stop();
 					System.out.println(ObjMan.h.CharY);
 					
 					System.out.println(ObjMan.h.CharX);
+					}
+					if (reloadtimer>75) {
+					reloadtime.start();	
+					}
 				} else if (e.getKeyCode() == KeyEvent.VK_W) {
 					Character.foward();
 				} else if (e.getKeyCode() == KeyEvent.VK_UP) {
@@ -319,6 +335,12 @@ respawnwait.stop();
 		}
 		if (e.getSource() == respawnwait) {
 			respawnready=true;
+		
+		}
+		if (e.getSource() == reloadtime) {
+			reloadtimer=0;
+			reloadtime.restart();
+			reloadtime.stop();
 		}
 		// TODO Auto-generated method stub
 		if (e.getSource() == frameDraw) {
