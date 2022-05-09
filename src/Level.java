@@ -8,6 +8,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+
 public class Level {
 	int LevelNumber = 0;
 	static BufferedImage lvlobg;
@@ -18,7 +19,7 @@ public class Level {
 	int window = 0;
 	boolean minionspawned = false;
 
-	LevelManager LM;
+	Hero character;
 	
 	
 	
@@ -27,8 +28,8 @@ public class Level {
 
 	ArrayList<Minion> Minions = new ArrayList<>();
 
-	Level(int LevelNumber) {
-		
+	Level(int LevelNumber, Hero character) {
+		this.character = character;
 		this.LevelNumber = LevelNumber;
 		try {
 			lvlobg = ImageIO.read(this.getClass().getResourceAsStream("Level 1/background.png"));
@@ -89,6 +90,13 @@ public class Level {
 					}
 					minionspawned=true;
 				}
+				if (character.CharX >530 && character.CharY <35 && character.CharX< 685 && character.CharY >0 ) {
+					window = 1;
+					System.out.println("Window "+ window);
+				}
+			}
+			if (window == 1) {
+				
 			}
 
 		} else if (LevelNumber == 3) {
@@ -120,4 +128,6 @@ public class Level {
 	public void update() {
 
 	}
+	
+	
 }

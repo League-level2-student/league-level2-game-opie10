@@ -146,6 +146,8 @@ public class ObjectManager implements ActionListener {
 			 projectile.remove(i);
 			 }
 		}
+		
+		
 
 	}
 

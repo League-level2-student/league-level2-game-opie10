@@ -11,12 +11,7 @@ public class LevelManager implements MouseListener {
 
 	private Level CurrentLevel;
 	boolean ingame = false;
-	Level Storyline = new Level(0);
-	Level Home = new Level(1);
-	Level o1 = new Level(2);
-	Level o2 = new Level(3);
-	Level o3 = new Level(4);
-	Level Trade = new Level(5);
+	
 	GamePanel gamePanel;
 	World one;
 	World two;
@@ -25,6 +20,12 @@ public class LevelManager implements MouseListener {
 	World buyone;
 	World buytwo;
 	World buythree;
+	Level Storyline;
+	Level Home;
+	Level o1;
+	Level o2;
+	Level o3;
+	Level Trade;
 	ObjectManager ObjM;
 	ArrayList<Minion> Minions;
 
@@ -38,7 +39,18 @@ public class LevelManager implements MouseListener {
 		buyone = new World(131, 40, 32);
 		buytwo = new World(131, 297, 32);
 		buythree = new World(131,460,32);
-		
+		Level Storyline = new Level(0,GP.Character);
+		Level Home = new Level(1,GP.Character);
+		Level o1 = new Level(2,GP.Character);
+		Level o2 = new Level(3,GP.Character);
+		Level o3 = new Level(4,GP.Character);
+		Level Trade = new Level(5,GP.Character);
+		this.Storyline = Storyline;
+		this.Home = Home;
+		this.o1 = o1;
+	this.o2 = o2;
+	this.o3 = o3;
+	this.Trade = Trade;
 		gamePanel = GP;
 		Levels.add(o1);
 		Levels.add(o2);

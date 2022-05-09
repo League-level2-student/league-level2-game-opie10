@@ -137,7 +137,11 @@ if (respawnready) {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (currentState == RESET) {
-			
+			for (int i = 0; i < ObjMan.Minions.size(); i++) {
+				ObjMan.Minions.remove(i);
+				
+				}
+			LevelManager.o1.minionspawned = false;
 		if (respawnready) {
 			
 		
@@ -148,6 +152,8 @@ if (respawnready) {
 			respawnwait.restart();
 respawnwait.stop();
 respawnready=false;
+
+
 			}
 		}
 		}
