@@ -93,7 +93,7 @@ public class ObjectManager implements ActionListener {
 		
 		for (int i = 0; i < Minions.size(); i++) {
 			if (Minions.get(i).Mtype==0) {
-				if (Minions.get(i).collisionBox.x>=h.CharX) {
+			if (Minions.get(i).collisionBox.x>=h.CharX) {
 					Minions.get(i).collisionBox.x -=1;
 				}
 				if (Minions.get(i).collisionBox.x<=h.CharX) {
@@ -111,7 +111,7 @@ public class ObjectManager implements ActionListener {
 				if (Minions.get(i).collisionBox.x>=h.CharX) {
 					Minions.get(i).collisionBox.x -=2;
 				}
-				if (Minions.get(i).collisionBox.x<=h.CharX) {
+				 if (Minions.get(i).collisionBox.x<=h.CharX) {
 					Minions.get(i).collisionBox.x +=2;
 				}
 				if (Minions.get(i).collisionBox.y>=h.CharY) {
@@ -122,7 +122,7 @@ public class ObjectManager implements ActionListener {
 				}
 			}
 		}
-		System.out.println("the amnt of minions is "+Minions.size());
+		//System.out.println("the amnt of minions is "+Minions.size());
 		for (int i = 0; i < projectile.size(); i++) {
 			projectile.get(i).update();
 
@@ -194,15 +194,22 @@ public class ObjectManager implements ActionListener {
 		
 		
 		for (int i = 0; i < Minions.size(); i++) {
-			
+			h.collisionBox= new Rectangle(h.CharX,h.CharY,h.CharWidth, h.CharHeight);
+		
 			Rectangle Minionc = Minions.get(i).collisionBox;
 			Rectangle Charc = h.collisionBox;
 			
 				if (Minionc.intersects(Charc)) {
-					h.isAlive = false;
-				
-					GamePanel.currentState=GamePanel.RESET;
+					if (GamePanel.invincible==0) {
+						h.isAlive = false;
 						
+						GamePanel.currentState=GamePanel.RESET;
+							
+					}
+					else if(GamePanel.invincible==1) {
+						h.isAlive=true;
+					}
+					
 					
 			}
 			for (int p = 0; p < projectile.size(); p++) {

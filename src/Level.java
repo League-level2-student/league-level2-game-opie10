@@ -94,22 +94,16 @@ public class Level {
 				
 				
 				if (character.CharX >530 && character.CharY <35 && character.CharX< 685 && character.CharY >0 ) {
-					while(Minions.size()>0) {
-						Minions.remove(0);
-					}
-					window = 1;
-					
-					
-					minionspawned = false;
-					System.out.println("Window "+ window);
-				}
+				newscreen();
+			}
 			}
 			if (window == 1) {
 				
 					if (!minionspawned) {
 character.CharX=525;
 character.CharY = 700;
-						for (int i = 0; i < 5; i++) {
+character.direction = character.North;
+						for (int i = 0; i < 25; i++) {
 							Random randx = new Random();
 							int randnumx = randx.nextInt(1100);
 							Random randy = new Random();
@@ -118,7 +112,7 @@ character.CharY = 700;
 							Minions.add(new Minion(randnumx, randnumy, 100, 100, 0));
 
 						}
-						for (int i = 0; i < 10; i++) {
+						for (int i = 0; i < 5; i++) {
 							Random randx = new Random();
 							int randnumx = randx.nextInt(1100);
 							Random randy = new Random();
@@ -129,9 +123,51 @@ character.CharY = 700;
 						}
 						minionspawned=true;
 					}
+					if (character.CharX >530 && character.CharY <35 && character.CharX< 685 && character.CharY >0 ) {
+						newscreen();
+						
 			}
+			}
+			if (window == 2) {
+				
+				if (!minionspawned) {
 
-		} else if (LevelNumber == 3) {
+					for (int i = 0; i < 40; i++) {
+						Random randx = new Random();
+						int randnumx = randx.nextInt(1200);
+						Random randy = new Random();
+						int randnumy = randy.nextInt(300);
+						
+						Minions.add(new Minion(randnumx, randnumy, 100, 100, 0));
+
+					}
+					for (int i = 0; i < 10; i++) {
+						Random randx = new Random();
+						int randnumx = randx.nextInt(1100);
+						Random randy = new Random();
+						int randnumy = randy.nextInt(400);
+						
+						Minions.add(new Minion(randnumx, randnumy, 100, 100, 1));
+
+					}
+					minionspawned=true;
+				}
+				if (character.CharX >530 && character.CharY <35 && character.CharX< 685 && character.CharY >0 ) {
+					newscreen();
+					
+		}
+			}
+if (window == 3) {
+				
+				if (!minionspawned) {
+
+					//add boss
+					minionspawned=true;
+				}
+				
+		}
+
+		 else if (LevelNumber == 3) {
 			g.drawImage(lvltwbg, 0, 0, OrbAttacker.width, OrbAttacker.height, null);
 			g.setFont(menuFont);
 			g.setColor(Color.YELLOW);
@@ -149,6 +185,8 @@ character.CharY = 700;
 			g.drawString("Welcome to the trading post", 200, 50);
 		}
 
+			
+		}
 	}
 
 	public void addMinions(ArrayList<Minion> al) {
@@ -160,6 +198,20 @@ character.CharY = 700;
 	public void update() {
 
 	}
+	public void newscreen() {
+		
+			while(Minions.size()>0) {
+				Minions.remove(0);
+			}
+			window = window+1;
+			character.CharX=525;
+			character.CharY = 700;
+			character.direction = character.North;
+			
+			minionspawned = false;
+			System.out.println("Window "+ window);
+		}
+	
 	
 	
 }

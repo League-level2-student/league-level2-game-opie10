@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	int cheat2;
 	int cheat3;
 	int giveall = 0;
-	int invincible = 0;
+	static int invincible = 0;
 	int pm = 0;
 	Timer menuflash = new Timer(1000, this);
 	Timer respawnwait = new Timer(5000, this);
@@ -299,6 +299,7 @@ respawnready=false;
 						if (invincible == 0) {
 							JOptionPane.showMessageDialog(null, "Invincibilty Active");
 							invincible = 1;
+							
 						} else if (invincible == 1) {
 							JOptionPane.showMessageDialog(null, "Invincibility de-activated");
 							invincible = 0;
