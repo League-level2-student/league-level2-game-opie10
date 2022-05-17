@@ -37,6 +37,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	int cheat3;
 	int giveall = 0;
 	static int invincible = 0;
+	static int autodie = 0;
+	static int hbs = 0;
 	int pm = 0;
 	Timer menuflash = new Timer(1000, this);
 	Timer respawnwait = new Timer(5000, this);
@@ -94,6 +96,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 		g.setFont(titleFont);
 		g.setColor(Color.BLACK);
 		g.drawString("YOU HAVE FAILED.", 500, 100);
+		
 		g.setFont(titleFont);
 		g.setColor(Color.BLACK);
 		g.drawString("YOU HAVE DIED " + deaths + " TIMES", 450, 800);
@@ -190,6 +193,10 @@ respawnready=false;
 
 			if (LevelManager.ingame == true) {
 				int cheatsE = cheat1 + cheat2 + cheat3;
+				if (e.getKeyCode() == KeyEvent.VK_R) {
+				reloadtime.start();
+					
+				}
 				if (e.getKeyCode() == KeyEvent.VK_Q) {
 					Character.rotateleft();
 
@@ -202,11 +209,7 @@ respawnready=false;
 						
 					
 					ObjMan.addProjectile(ObjMan.h.getProjectile());
-					System.out.println(ObjMan.projectile.get(ObjMan.projectile.size()-1).CharY);
-					System.out.println(ObjMan.projectile.get(ObjMan.projectile.size()-1).CharX);
-					System.out.println(ObjMan.h.CharY);
 					
-					System.out.println(ObjMan.h.CharX);
 					}
 					if (reloadtimer>75) {
 					reloadtime.start();	
@@ -267,30 +270,35 @@ respawnready=false;
 					if (e.getKeyCode() == KeyEvent.VK_H) {
 						JOptionPane.showMessageDialog(null,
 								"Cheat Controls:\n" + "(-) to activate invincibility\n"
-										+ "(=) to get all weapons & items\n" + "(.) to activate pacifist mode",
+										+ "(=) for enemies to auto-die when touched\n" + "(.) to activate hitboxes ",
 								"Cheat Controls", JOptionPane.INFORMATION_MESSAGE);
 
 					}
 					if (e.getKeyCode() == KeyEvent.VK_EQUALS) {
-						if (giveall == 0) {
-							JOptionPane.showMessageDialog(null, "All Weapons have been given");
-							giveall = 1;
+						if (autodie == 0) {
+							JOptionPane.showMessageDialog(null, "Enemies now auto-die");
+							autodie = 1;
+						}
+						
+						else if (autodie == 1) {
+							JOptionPane.showMessageDialog(null, "Enemies no-longer auto-die");
+							autodie = 0;
 						}
 
 					}
 					if (e.getKeyCode() == KeyEvent.VK_SLASH) {
-						System.out.println("test");
-						JOptionPane.showMessageDialog(null, "Minions:"+LevelManager.Minions.size()+"\n Window Size: "+OrbAttacker.width+" by "+OrbAttacker.height+"\n Frame draw time: "+frameDraw.getDelay()+"\nCredits:\n Code: Augie\n A lot of help: Daniel\n Like a lot of help: Daniel\n ");
+						
+						JOptionPane.showMessageDialog(null, "Minions: "+LevelManager.Minions.size()+"\n Window:"+LevelManager.getLevel().window+"\n Window Size: "+OrbAttacker.width+ "by" +OrbAttacker.height +"\nCredits:\n Code: Augie\n A lot of help: Daniel\n Like a lot of help: Daniel\n ");
 
 					}
 
 					if (e.getKeyCode() == KeyEvent.VK_PERIOD) {
-						if (pm == 0) {
-							JOptionPane.showMessageDialog(null, "Pacifist mode active");
-							pm = 1;
-						} else if (pm == 1) {
-							JOptionPane.showMessageDialog(null, "Pacifist mode de-activated");
-							pm = 0;
+						if (hbs == 0) {
+							JOptionPane.showMessageDialog(null, "Hitboxes Visible");
+							hbs = 1;
+						} else if (hbs == 1) {
+							JOptionPane.showMessageDialog(null, "Hitboxes Hidden");
+							hbs = 0;
 						}
 
 					}

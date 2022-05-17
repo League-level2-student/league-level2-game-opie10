@@ -64,24 +64,22 @@ public class Level {
 			
 			g.drawImage(lvlobg, 0, 0, OrbAttacker.width, OrbAttacker.height, null);
 
-			g.setFont(menuFont);
-			g.setColor(Color.YELLOW);
-			g.drawString("Level 1", 400, 100);
+			
 			if (window == 0) {
 				if (!minionspawned) {
 
 					for (int i = 0; i < 5; i++) {
 						Random randx = new Random();
-						int randnumx = randx.nextInt(1100);
+						int randnumx = randx.nextInt(1200);
 						Random randy = new Random();
-						int randnumy = randy.nextInt(400);
+						int randnumy = randy.nextInt(300);
 						
 						Minions.add(new Minion(randnumx, randnumy, 100, 100, 0));
 
 					}
 					for (int i = 0; i < 10; i++) {
 						Random randx = new Random();
-						int randnumx = randx.nextInt(1100);
+						int randnumx = randx.nextInt(1200);
 						Random randy = new Random();
 						int randnumy = randy.nextInt(400);
 						
@@ -105,20 +103,29 @@ character.CharY = 700;
 character.direction = character.North;
 						for (int i = 0; i < 25; i++) {
 							Random randx = new Random();
-							int randnumx = randx.nextInt(1100);
+							int randnumx = randx.nextInt(1200);
 							Random randy = new Random();
-							int randnumy = randy.nextInt(400);
+							int randnumy = randy.nextInt(300);
 							
 							Minions.add(new Minion(randnumx, randnumy, 100, 100, 0));
 
 						}
 						for (int i = 0; i < 5; i++) {
 							Random randx = new Random();
-							int randnumx = randx.nextInt(1100);
+							int randnumx = randx.nextInt(1200);
 							Random randy = new Random();
 							int randnumy = randy.nextInt(400);
 							
 							Minions.add(new Minion(randnumx, randnumy, 100, 100, 1));
+
+						}
+						for (int i = 0; i < 3; i++) {
+							Random randx = new Random();
+							int randnumx = randx.nextInt(1200);
+							Random randy = new Random();
+							int randnumy = randy.nextInt(200);
+							
+							Minions.add(new Minion(randnumx, randnumy, 100, 100, 2));
 
 						}
 						minionspawned=true;
@@ -132,22 +139,31 @@ character.direction = character.North;
 				
 				if (!minionspawned) {
 
-					for (int i = 0; i < 40; i++) {
+					for (int i = 0; i < 30; i++) {
 						Random randx = new Random();
-						int randnumx = randx.nextInt(1200);
+						int randnumx = randx.nextInt(1180);
 						Random randy = new Random();
 						int randnumy = randy.nextInt(300);
 						
 						Minions.add(new Minion(randnumx, randnumy, 100, 100, 0));
 
 					}
-					for (int i = 0; i < 10; i++) {
+					for (int i = 0; i < 5; i++) {
 						Random randx = new Random();
-						int randnumx = randx.nextInt(1100);
+						int randnumx = randx.nextInt(1180);
 						Random randy = new Random();
 						int randnumy = randy.nextInt(400);
 						
 						Minions.add(new Minion(randnumx, randnumy, 100, 100, 1));
+
+					}
+					for (int i = 0; i < 8; i++) {
+						Random randx = new Random();
+						int randnumx = randx.nextInt(1180);
+						Random randy = new Random();
+						int randnumy = randy.nextInt(200);
+						
+						Minions.add(new Minion(randnumx, randnumy, 100, 100, 2));
 
 					}
 					minionspawned=true;
@@ -160,12 +176,12 @@ character.direction = character.North;
 if (window == 3) {
 				
 				if (!minionspawned) {
-
+					
 					//add boss
 					minionspawned=true;
 				}
 				
-		}
+}
 
 		 else if (LevelNumber == 3) {
 			g.drawImage(lvltwbg, 0, 0, OrbAttacker.width, OrbAttacker.height, null);

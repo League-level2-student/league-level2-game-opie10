@@ -38,8 +38,12 @@ public class Hero extends GameObject {
 	}
 
 	void draw(Graphics g) {
+		if (GamePanel.hbs ==1) {
+			
+		
 		g.setColor(Color.GREEN);
 		g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
+		}
 		if (gotImage) {
 			if (direction == North) {
 				g.drawImage(imageN, CharX, CharY, CharWidth, CharHeight, null);

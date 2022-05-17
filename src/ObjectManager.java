@@ -12,20 +12,21 @@ public class ObjectManager implements ActionListener {
 	Projectile proj;
 	boolean shootright = false;
 
-	int score = 0;
+	int killscore = 0;
 	Boolean isInvincible = false;
 	Hero h;
 
 	ObjectManager(Hero Hero) {
 		h = Hero;
-		
+
 	}
 
+	int largeCol = 0;
+
 	public void addProjectile(Projectile pow) {
-		
+
 		if (shootright == true) {
-			
-			
+
 			if (h.direction == h.North) {
 				pow.CharX = h.CharX + 28;
 				projectile.add(pow);
@@ -41,13 +42,13 @@ public class ObjectManager implements ActionListener {
 			}
 			if (h.direction == h.South) {
 				pow.CharX = h.CharX + 110;
-				pow.projY = h.CharY +105;
+				pow.projY = h.CharY + 105;
 				projectile.add(pow);
 				shootright = false;
 				return;
 			}
 			if (h.direction == h.West) {
-				pow.projX= h.CharX+25;
+				pow.projX = h.CharX + 25;
 				pow.CharY = h.CharY + 107;
 				projectile.add(pow);
 				shootright = false;
@@ -58,7 +59,7 @@ public class ObjectManager implements ActionListener {
 
 		if (shootright == false) {
 			if (h.direction == h.North) {
-				pow.CharX = h.CharX +105;
+				pow.CharX = h.CharX + 105;
 				projectile.add(pow);
 				shootright = true;
 				return;
@@ -90,70 +91,79 @@ public class ObjectManager implements ActionListener {
 	}
 
 	public void update() {
-		
+
 		for (int i = 0; i < Minions.size(); i++) {
-			if (Minions.get(i).Mtype==0) {
-			if (Minions.get(i).collisionBox.x>=h.CharX) {
-					Minions.get(i).collisionBox.x -=1;
+			if (Minions.get(i).Mtype == 0) {
+				if (Minions.get(i).collisionBox.x >= h.CharX) {
+					Minions.get(i).collisionBox.x -= 1;
 				}
-				if (Minions.get(i).collisionBox.x<=h.CharX) {
-					Minions.get(i).collisionBox.x +=1;
+				if (Minions.get(i).collisionBox.x <= h.CharX) {
+					Minions.get(i).collisionBox.x += 1;
 				}
-				if (Minions.get(i).collisionBox.y>=h.CharY) {
-					Minions.get(i).collisionBox.y -=1;
+				if (Minions.get(i).collisionBox.y >= h.CharY) {
+					Minions.get(i).collisionBox.y -= 1;
 				}
-				if (Minions.get(i).collisionBox.y<=h.CharY) {
-					Minions.get(i).collisionBox.y +=1;
+				if (Minions.get(i).collisionBox.y <= h.CharY) {
+					Minions.get(i).collisionBox.y += 1;
 				}
-				
+
 			}
-			if (Minions.get(i).Mtype==1) {
-				if (Minions.get(i).collisionBox.x>=h.CharX) {
-					Minions.get(i).collisionBox.x -=2;
+			if (Minions.get(i).Mtype == 1) {
+				if (Minions.get(i).collisionBox.x >= h.CharX) {
+					Minions.get(i).collisionBox.x -= 2;
 				}
-				 if (Minions.get(i).collisionBox.x<=h.CharX) {
-					Minions.get(i).collisionBox.x +=2;
+				if (Minions.get(i).collisionBox.x <= h.CharX) {
+					Minions.get(i).collisionBox.x += 2;
 				}
-				if (Minions.get(i).collisionBox.y>=h.CharY) {
-					Minions.get(i).collisionBox.y -=2;
+				if (Minions.get(i).collisionBox.y >= h.CharY) {
+					Minions.get(i).collisionBox.y -= 2;
 				}
-				if (Minions.get(i).collisionBox.y<=h.CharY) {
-					Minions.get(i).collisionBox.y +=2;
+				if (Minions.get(i).collisionBox.y <= h.CharY) {
+					Minions.get(i).collisionBox.y += 2;
 				}
 			}
+			if (Minions.get(i).Mtype == 2) {
+				if (Minions.get(i).collisionBox.x >= h.CharX) {
+					Minions.get(i).collisionBox.x -= .7;
+				}
+				if (Minions.get(i).collisionBox.x <= h.CharX) {
+					Minions.get(i).collisionBox.x += 1;
+				}
+				if (Minions.get(i).collisionBox.y >= h.CharY) {
+					Minions.get(i).collisionBox.y -= .7;
+				}
+				if (Minions.get(i).collisionBox.y <= h.CharY) {
+					Minions.get(i).collisionBox.y += 1;
+				}
+			}
+
 		}
-		//System.out.println("the amnt of minions is "+Minions.size());
+		// System.out.println("the amnt of minions is "+Minions.size());
 		for (int i = 0; i < projectile.size(); i++) {
 			projectile.get(i).update();
 
-			
-				if(projectile.get(i).projY>OrbAttacker.height) {
-			
-			projectile.get(i).isAlive = false;
-				}
-				if (projectile.get(i).projY<0) {
-					projectile.get(i).isAlive = false;
-				}
-				if (projectile.get(i).projX>OrbAttacker.width) {
-					projectile.get(i).isAlive = false;
-				}
-				if (projectile.get(i).projX<0) {
-					projectile.get(i).isAlive = false;
-				}
-				
-		
-			
+			if (projectile.get(i).projY > OrbAttacker.height) {
+
+				projectile.get(i).isAlive = false;
+			}
+			if (projectile.get(i).projY < 0) {
+				projectile.get(i).isAlive = false;
+			}
+			if (projectile.get(i).projX > OrbAttacker.width) {
+				projectile.get(i).isAlive = false;
+			}
+			if (projectile.get(i).projX < 0) {
+				projectile.get(i).isAlive = false;
+			}
+
 		}
 		for (int i = 0; i < Minions.size(); i++) {
 			Minions.get(i).update();
-			 checkcollision();
+			checkcollision();
 
-			
-	}
+		}
 
-	 
-	 purgeObjects();
-	 scoreTrack();
+		purgeObjects();
 
 	}
 
@@ -165,74 +175,87 @@ public class ObjectManager implements ActionListener {
 	}
 
 	public void resetMinions() {
-		
-		while (Minions.size()>0) {
-		Minions.remove(0);	
+
+		while (Minions.size() > 0) {
+			Minions.remove(0);
 		}
-			
+
 	}
+
 	public void purgeObjects() {
 
 		for (int i = 0; i < Minions.size(); i++) {
 			Minions.get(i);
 			if (Minions.get(i).isAlive == false) {
-			 Minions.remove(i);
-			 }
+				Minions.remove(i);
+			}
 		}
 		for (int i = 0; i < projectile.size(); i++) {
 			projectile.get(i);
 			if (projectile.get(i).isAlive == false) {
-			 projectile.remove(i);
-			 }
+				projectile.remove(i);
+			}
 		}
-		
-		
 
 	}
 
 	public void checkcollision() {
-		
-		
+
 		for (int i = 0; i < Minions.size(); i++) {
-			h.collisionBox= new Rectangle(h.CharX,h.CharY,h.CharWidth, h.CharHeight);
-		
+
+			h.collisionBox = new Rectangle(h.CharX, h.CharY, h.CharWidth, h.CharHeight);
+
 			Rectangle Minionc = Minions.get(i).collisionBox;
 			Rectangle Charc = h.collisionBox;
-			
-				if (Minionc.intersects(Charc)) {
-					if (GamePanel.invincible==0) {
-						h.isAlive = false;
-						
-						GamePanel.currentState=GamePanel.RESET;
-							
+
+			if (Minionc.intersects(Charc)) {
+				if (GamePanel.invincible == 0) {
+					h.isAlive = false;
+
+					GamePanel.currentState = GamePanel.RESET;
+
+				} else if (GamePanel.invincible == 1) {
+					h.isAlive = true;
+					if (GamePanel.autodie == 1) {
+
+						Minions.get(i).isAlive = false;
 					}
-					else if(GamePanel.invincible==1) {
-						h.isAlive=true;
-					}
-					
-					
+				}
+
 			}
 			for (int p = 0; p < projectile.size(); p++) {
 				Rectangle rt = projectile.get(p).collisionBox;
-		
-				
+
 				if (rt.intersects(Minionc)) {
 					projectile.get(p).isAlive = false;
-					Minions.get(i).isAlive = false;
-					score += 1;
-					
+					if (Minions.get(i).Mtype == 1 || Minions.get(i).Mtype == 0) {
+						Minions.get(i).isAlive = false;
+
+					}
+
+					if (Minions.get(i).Mtype == 2) {
+						if (rt.intersects(Minionc)) {
+
+							largeCol = largeCol + 1;
+
+							if (largeCol == 30) {
+
+								largeCol = 0;
+								Minions.get(i).gorillaHits = true;
+								if (Minions.get(i).gorillaHits = true) {
+
+									Minions.get(i).isAlive = false;
+									Minions.get(i).gorillaHits = false;
+								}
+							}
+						}
+					}
+
 				}
-				
+
+			}
+
 		}
-			
-		}
-		
-
-	}
-
-	public int scoreTrack() {
-
-		return score;
 
 	}
 

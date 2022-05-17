@@ -53,8 +53,12 @@ Projectile pow;
 	}
 
 	public void draw(Graphics g) {
+		if (GamePanel.hbs==1) {
+			
+		
 		g.setColor(Color.RED);
 		g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
+		}
 		if (gotImage) {
 			//projX=CharX;
 			//projY=CharY;

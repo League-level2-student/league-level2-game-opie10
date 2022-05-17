@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -65,7 +66,8 @@ public class LevelManager implements MouseListener {
 		CurrentLevel.draw(g);
 		if (CurrentLevel == o1 || CurrentLevel == o2 || CurrentLevel == o3) {
 			ingame = true;
-
+			g.setColor(Color.YELLOW);
+			g.drawString("Shots Left till reload: "+(75-gamePanel.reloadtimer), 50, 20);
 			if (gamePanel.Character != null) {
 
 				gamePanel.Character.draw(g);
@@ -150,7 +152,14 @@ this.ObjM.Minions = CurrentLevel.Minions;
 		// TODO Auto-generated method stub
 		if (CurrentLevel == Home) {
 			if (one.checkInside(e.getX(), e.getY())) {
+				ObjM.purgeObjects();
+				o1.minionspawned=false;
+				o1.window=0;
 				changeLevel(2);
+				
+					
+						
+					
 			} else if (two.checkInside(e.getX(), e.getY())) {
 				changeLevel(3);
 			}
