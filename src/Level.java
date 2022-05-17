@@ -89,14 +89,46 @@ public class Level {
 
 					}
 					minionspawned=true;
+					
 				}
+				
+				
 				if (character.CharX >530 && character.CharY <35 && character.CharX< 685 && character.CharY >0 ) {
+					while(Minions.size()>0) {
+						Minions.remove(0);
+					}
 					window = 1;
+					
+					
+					minionspawned = false;
 					System.out.println("Window "+ window);
 				}
 			}
 			if (window == 1) {
 				
+					if (!minionspawned) {
+character.CharX=525;
+character.CharY = 700;
+						for (int i = 0; i < 5; i++) {
+							Random randx = new Random();
+							int randnumx = randx.nextInt(1100);
+							Random randy = new Random();
+							int randnumy = randy.nextInt(400);
+							
+							Minions.add(new Minion(randnumx, randnumy, 100, 100, 0));
+
+						}
+						for (int i = 0; i < 10; i++) {
+							Random randx = new Random();
+							int randnumx = randx.nextInt(1100);
+							Random randy = new Random();
+							int randnumy = randy.nextInt(400);
+							
+							Minions.add(new Minion(randnumx, randnumy, 100, 100, 1));
+
+						}
+						minionspawned=true;
+					}
 			}
 
 		} else if (LevelNumber == 3) {

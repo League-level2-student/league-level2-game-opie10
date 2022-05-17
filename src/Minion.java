@@ -13,9 +13,13 @@ public class Minion extends GameObject {
 	public BufferedImage CurrentMinionType;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
-
+int Mtype;
 	Minion(int x, int y, int width, int height, int type) {
+		
 		super(x, y, width, height);
+		Mtype =type;
+		collisionBox.x = CharX;
+		collisionBox.y = CharY;
 		if (needImage) {
 			loadImages();
 		}
@@ -34,7 +38,7 @@ g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.heig
 			
 			
 
-				g.drawImage(CurrentMinionType, CharX, CharY, CharWidth, CharHeight, null);
+				g.drawImage(CurrentMinionType, collisionBox.x, collisionBox.y, CharWidth, CharHeight, null);
 
 			
 		}

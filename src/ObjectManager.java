@@ -91,6 +91,38 @@ public class ObjectManager implements ActionListener {
 
 	public void update() {
 		
+		for (int i = 0; i < Minions.size(); i++) {
+			if (Minions.get(i).Mtype==0) {
+				if (Minions.get(i).collisionBox.x>=h.CharX) {
+					Minions.get(i).collisionBox.x -=1;
+				}
+				if (Minions.get(i).collisionBox.x<=h.CharX) {
+					Minions.get(i).collisionBox.x +=1;
+				}
+				if (Minions.get(i).collisionBox.y>=h.CharY) {
+					Minions.get(i).collisionBox.y -=1;
+				}
+				if (Minions.get(i).collisionBox.y<=h.CharY) {
+					Minions.get(i).collisionBox.y +=1;
+				}
+				
+			}
+			if (Minions.get(i).Mtype==1) {
+				if (Minions.get(i).collisionBox.x>=h.CharX) {
+					Minions.get(i).collisionBox.x -=2;
+				}
+				if (Minions.get(i).collisionBox.x<=h.CharX) {
+					Minions.get(i).collisionBox.x +=2;
+				}
+				if (Minions.get(i).collisionBox.y>=h.CharY) {
+					Minions.get(i).collisionBox.y -=2;
+				}
+				if (Minions.get(i).collisionBox.y<=h.CharY) {
+					Minions.get(i).collisionBox.y +=2;
+				}
+			}
+		}
+		System.out.println("the amnt of minions is "+Minions.size());
 		for (int i = 0; i < projectile.size(); i++) {
 			projectile.get(i).update();
 
@@ -110,7 +142,7 @@ public class ObjectManager implements ActionListener {
 				}
 				
 		
-			System.out.println("the size is "+projectile.size());
+			
 		}
 		for (int i = 0; i < Minions.size(); i++) {
 			Minions.get(i).update();
@@ -132,6 +164,13 @@ public class ObjectManager implements ActionListener {
 		}
 	}
 
+	public void resetMinions() {
+		
+		while (Minions.size()>0) {
+		Minions.remove(0);	
+		}
+			
+	}
 	public void purgeObjects() {
 
 		for (int i = 0; i < Minions.size(); i++) {

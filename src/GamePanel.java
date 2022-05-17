@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	LevelManager LevelManager = new LevelManager(this, ObjMan);
 	Timer frameDraw;
 	boolean textBlue = true;
-boolean respawnready = false;
+	boolean respawnready = false;
 	int cheat1;
 	int cheat2;
 	int cheat3;
@@ -41,6 +41,7 @@ boolean respawnready = false;
 	Timer menuflash = new Timer(1000, this);
 	Timer respawnwait = new Timer(5000, this);
 	Timer reloadtime = new Timer(3000, this);
+
 	GamePanel(JFrame jf) {
 		frame = jf;
 		jf.addMouseListener(LevelManager);
@@ -85,44 +86,40 @@ boolean respawnready = false;
 	}
 
 	public void drawResetState(Graphics g) {
-		
-		
+
 		menuflash.start();
 		respawnwait.start();
-g.setColor(Color.RED);
-g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
-g.setFont(titleFont);
-g.setColor(Color.BLACK);
-g.drawString("YOU HAVE FAILED.", 500, 100);
-g.setFont(titleFont);
-g.setColor(Color.BLACK);
-g.drawString("YOU HAVE DIED "+deaths+" TIMES", 450, 800);
-g.setFont(titleFont);
-g.setColor(Color.BLACK);
-if (textBlue) {
+		g.setColor(Color.RED);
+		g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
+		g.setFont(titleFont);
+		g.setColor(Color.BLACK);
+		g.drawString("YOU HAVE FAILED.", 500, 100);
+		g.setFont(titleFont);
+		g.setColor(Color.BLACK);
+		g.drawString("YOU HAVE DIED " + deaths + " TIMES", 450, 800);
+		g.setFont(titleFont);
+		g.setColor(Color.BLACK);
+		if (textBlue) {
 
-	g.setColor(Color.RED);
+			g.setColor(Color.RED);
 
-} else {
-	g.setColor(Color.BLACK);
-}
-g.drawString("Returning to ship...", 500, 500);
-if (respawnready) {
-	g.setColor(Color.BLACK);
-	g.drawString("RESPAWN WITH ENTER ", 450, 300);
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("Returning to ship...", 500, 500);
+		if (respawnready) {
+			g.setColor(Color.BLACK);
+			g.drawString("RESPAWN WITH ENTER ", 450, 300);
 
-}
-}
-
-	
+		}
+	}
 
 	public void paintComponent(Graphics g) {
 		if (currentState == MENU) {
 			drawMenuState(g);
 		} else if (currentState == GAME) {
 			drawGameState(g);
-		}
-		else if (currentState ==RESET){
+		} else if (currentState == RESET) {
 			drawResetState(g);
 		}
 
@@ -137,15 +134,15 @@ if (respawnready) {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (currentState == RESET) {
-			for (int i = 0; i < ObjMan.Minions.size(); i++) {
-				ObjMan.Minions.remove(i);
+			ObjMan.resetMinions();
+			
 				
-				}
 			LevelManager.o1.minionspawned = false;
+			LevelManager.o1.window = 0;
 		if (respawnready) {
 			
 		
-			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			if (e.getKeyCode() == KeyEvent.VK_ENTER && currentState == RESET) {
 				deaths = deaths+1;
 			currentState=GAME;
 			LevelManager.changeLevel(1);
@@ -312,8 +309,7 @@ respawnready=false;
 
 			}
 		}
-
-	}
+		}
 
 	public void JFrameDimen(int w, int h) {
 		frame.setPreferredSize(new Dimension(w, h));
@@ -340,11 +336,11 @@ respawnready=false;
 
 		}
 		if (e.getSource() == respawnwait) {
-			respawnready=true;
-		
+			respawnready = true;
+
 		}
 		if (e.getSource() == reloadtime) {
-			reloadtimer=0;
+			reloadtimer = 0;
 			reloadtime.restart();
 			reloadtime.stop();
 		}
