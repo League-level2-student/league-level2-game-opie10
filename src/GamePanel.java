@@ -161,7 +161,7 @@ respawnready=false;
 		if (currentState == MENU) {
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				JOptionPane.showMessageDialog(null,
-						"-WASD to move\n" + "-SPACE to shoot\n" + "-F to interact/Open chests\n" + "-ENTER to restart\n"
+						"-WASD to move\n" + "-SPACE to shoot\n" + "-E and Q to rotate left and right\n" + "-ENTER to restart\n"+"-R to Reload\n"
 								+ "-H for help\n" + "-Movement relates to direction\n"
 								+ "  -Ex: If you rotate the character left,(Cont.)\n"
 								+ "  -(Cont.) W will take you (From your perspective) right.",
@@ -242,8 +242,8 @@ respawnready=false;
 
 				else if (e.getKeyCode() == KeyEvent.VK_H) {
 					JOptionPane.showMessageDialog(null,
-							"-WASD to move\n" + "-SPACE to shoot\n" + "-F to interact/Open chests\n"
-									+ "-ENTER to restart\n" + "-H for help\n" + "-Movement relates to direction\n"
+							"-WASD to move\n" + "-SPACE to shoot\n" + "-E and Q to rotate left and right\n" + "-ENTER to restart\n"+"-R to Reload\n"
+									+ "-H for help\n" + "-Movement relates to direction\n"
 									+ "  -Ex: If you rotate the character left,(Cont.)\n"
 									+ "  -(Cont.) W will take you (From your perspective) right.",
 							"Instructions", JOptionPane.INFORMATION_MESSAGE);
