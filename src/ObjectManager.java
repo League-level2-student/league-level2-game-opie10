@@ -202,9 +202,18 @@ public class ObjectManager implements ActionListener {
 	public void checkcollision() {
 
 		for (int i = 0; i < Minions.size(); i++) {
-
-			h.collisionBox = new Rectangle(h.CharX, h.CharY, h.CharWidth, h.CharHeight);
-
+if(h.direction == h.North) {
+			h.collisionBox = new Rectangle(h.CharX+20, h.CharY+25, h.CharWidth-45, h.CharHeight-70);
+}
+if(h.direction == h.West) {
+	h.collisionBox = new Rectangle(h.CharX+30, h.CharY+20, h.CharWidth-80, h.CharHeight-50);
+}
+if(h.direction == h.East) {
+	h.collisionBox = new Rectangle(h.CharX+50, h.CharY+20, h.CharWidth-80, h.CharHeight-50);
+}
+if(h.direction == h.South) {
+	h.collisionBox = new Rectangle(h.CharX+25, h.CharY+50, h.CharWidth-45, h.CharHeight-75);
+}
 			Rectangle Minionc = Minions.get(i).collisionBox;
 			Rectangle Charc = h.collisionBox;
 
@@ -238,7 +247,7 @@ public class ObjectManager implements ActionListener {
 
 							largeCol = largeCol + 1;
 
-							if (largeCol == 30) {
+							if (largeCol == 10) {
 
 								largeCol = 0;
 								Minions.get(i).gorillaHits = true;
