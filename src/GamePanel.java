@@ -162,9 +162,7 @@ respawnready=false;
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				JOptionPane.showMessageDialog(null,
 						"-WASD to move\n" + "-SPACE to shoot\n" + "-E and Q to rotate left and right\n" + "-ENTER to restart\n"+"-R to Reload\n"
-								+ "-H for help\n" + "-Movement relates to direction\n"
-								+ "  -Ex: If you rotate the character left,(Cont.)\n"
-								+ "  -(Cont.) W will take you (From your perspective) right.",
+								+ "-H for help\n",
 						"Instructions", JOptionPane.INFORMATION_MESSAGE);
 
 			}
@@ -243,9 +241,7 @@ respawnready=false;
 				else if (e.getKeyCode() == KeyEvent.VK_H) {
 					JOptionPane.showMessageDialog(null,
 							"-WASD to move\n" + "-SPACE to shoot\n" + "-E and Q to rotate left and right\n" + "-ENTER to restart\n"+"-R to Reload\n"
-									+ "-H for help\n" + "-Movement relates to direction\n"
-									+ "  -Ex: If you rotate the character left,(Cont.)\n"
-									+ "  -(Cont.) W will take you (From your perspective) right.",
+									+ "-H for help\n",
 							"Instructions", JOptionPane.INFORMATION_MESSAGE);
 				} else if (e.getKeyCode() == KeyEvent.VK_C) {
 					cheat1 = 1;

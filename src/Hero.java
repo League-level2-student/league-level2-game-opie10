@@ -80,42 +80,15 @@ public class Hero extends GameObject {
 	}
 
 	public void right() {
-		if (direction == North) {
+		
 			XSpeed = 5;
-
-		} else if (direction == East) {
-			YSpeed = 5;
-
-		} else if (direction == South) {
-			XSpeed = -5;
-			;
-
-		} else if (direction == West) {
-			YSpeed = -5;
-
-		}
 
 		super.update();
 	}
 
 	public void left() {
-		if (direction == North) {
+		
 			XSpeed = -5;
-
-		}
-		if (direction == East) {
-			YSpeed = -5;
-
-		}
-		if (direction == South) {
-			XSpeed = 5;
-			;
-
-		}
-		if (direction == West) {
-			YSpeed = 5;
-
-		}
 
 		super.update();
 	}
@@ -123,42 +96,20 @@ public class Hero extends GameObject {
 	public void foward() {
 		if (boostenabled == true) {
 			return;
-		} else if (direction == North) {
+		} 
+		else{
 			YSpeed = -5;
 
-		} else if (direction == East) {
-			XSpeed = 5;
-
-		} else if (direction == South) {
-			YSpeed = 5;
-			;
-
-		} else if (direction == West) {
-			XSpeed = -5;
-
-		}
+		} 
 
 		super.update();
 	}
 
 	public void back() {
-		if (direction == North) {
+		
 			YSpeed = 5;
 
-		}
-		if (direction == East) {
-			XSpeed = -5;
-
-		}
-		if (direction == South) {
-			YSpeed = -5;
-			;
-
-		}
-		if (direction == West) {
-			XSpeed = 5;
-
-		}
+		
 
 		super.update();
 

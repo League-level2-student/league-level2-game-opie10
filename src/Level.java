@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,14 +19,14 @@ public class Level {
 	static BufferedImage tradeIMG;
 	int window = 0;
 	boolean minionspawned = false;
-
+	
 	Hero character;
 	
 	
 	
 	
 	Font menuFont = new Font("Arial", Font.ITALIC, 20);
-
+	Font TitleFont = new Font("Arial", Font.BOLD, 22);
 	ArrayList<Minion> Minions = new ArrayList<>();
 
 	Level(int LevelNumber, Hero character) {
@@ -49,16 +50,25 @@ public class Level {
 		if (LevelNumber == 0) {
 			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, OrbAttacker.width, OrbAttacker.height);
-			g.setFont(menuFont);
+			g.setFont(TitleFont);
 			g.setColor(Color.YELLOW);
-			g.drawString("[Insert story here]", 400, 100);
-
+			g.drawString("Not very long ago at all, in fact, quite far in the future, in a galaxy quite close to us,", 200, 100);
+			g.drawString("You are preparing for your first mission for our new Supreme Almighty Leaders, the FƎRZUƆ IMPERIUM.", 50, 150);
+			g.drawString("They have tasked you to survey the system you are currently in, to find a suitable planet for advanced operations.", 25, 200);
+			g.drawString("You must clear all of the planets of initial dangers, before the surveyors and terraformers arrive.", 100, 250);
+			g.drawString("Your ship, the F.I.S dragonfly is equipped with highly advanced teleport beams,", 150, 300);
+			g.drawString("Which will transport you to and from the planets.", 300, 350);
+			g.drawString("Proceed now to the planet selection screen, and begin your mission.", 225, 400);
+			
+			g.drawString("(ESC to Continue)", 950,850);
+			
+													
 		} else if (LevelNumber == 1) {
 			g.drawImage(plntss, 0, 0, plntss.getWidth(), plntss.getHeight(), null);
 
 			g.setFont(menuFont);
 			g.setColor(Color.YELLOW);
-			g.drawString("Welcome to the planet selection screen.", 400, 100);
+			g.drawString("Welcome to the planet selection screen.", 400, 25);
 
 		} else if (LevelNumber == 2) {
 			
@@ -227,6 +237,7 @@ if (window == 3) {
 			minionspawned = false;
 			System.out.println("Window "+ window);
 		}
+	
 	
 	
 	
